@@ -1,35 +1,17 @@
 import de.mannodermaus.gradle.plugins.junit5.junitPlatform
 
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("kotlin-android")
     id("kotlin-android-extensions")
     id("de.mannodermaus.android-junit5")
-    id("jacoco")
-}
-
-jacoco {
-    toolVersion = "0.8.3"
 }
 
 android {
     compileSdkVersion(Deps.Versions.compileSdk)
     defaultConfig {
-        applicationId = "com.sadashi.client.chatwork"
         minSdkVersion(Deps.Versions.minSdk)
         targetSdkVersion(Deps.Versions.compileSdk)
-        versionCode = 1
-        versionName = "0.0.1"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-    buildTypes {
-        getByName("debug") {
-            isMinifyEnabled = false
-        }
-        getByName("release") {
-            isMinifyEnabled = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-        }
     }
     sourceSets {
         getByName("main").java.srcDirs("src/main/kotlin")
