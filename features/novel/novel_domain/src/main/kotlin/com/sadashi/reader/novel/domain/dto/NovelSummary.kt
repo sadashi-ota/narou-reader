@@ -1,0 +1,17 @@
+package com.sadashi.reader.novel.domain.dto
+
+import com.sadashi.reader.novel.domain.NCode
+import java.util.Date
+
+data class NovelSummary(
+    val ncode: NCode,
+    val title: String,
+    val writer: String,
+    val story: String,
+    val allPoint: Int,
+    val allRatingCount: Int,
+    val totalRating: Int,
+    val reviewCount: Int,
+    val bookmarkCount: Int,
+    val novelUpdatedAt: Date
+)
