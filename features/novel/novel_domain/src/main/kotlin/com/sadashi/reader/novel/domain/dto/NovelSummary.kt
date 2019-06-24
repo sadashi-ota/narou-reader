@@ -8,8 +8,6 @@ data class NovelSummary(
     val title: String,
     val writer: String,
     val story: String,
-    val allPoint: Int,
-    val allRatingCount: Int,
     val totalRating: Int,
     val reviewCount: Int,
     val bookmarkCount: Int,
