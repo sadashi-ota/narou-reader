@@ -1,3 +1,4 @@
+import com.android.build.gradle.internal.dsl.BuildType
 import de.mannodermaus.gradle.plugins.junit5.junitPlatform
 
 plugins {
@@ -7,6 +8,8 @@ plugins {
     id("de.mannodermaus.android-junit5")
     id("jacoco")
 }
+
+Prop.loadProperties("$rootDir/properties/secrets.properties")
 
 jacoco {
     toolVersion = "0.8.3"
@@ -24,9 +27,11 @@ android {
     }
     buildTypes {
         getByName("debug") {
+            setCommonBuildConfig(this)
             isMinifyEnabled = false
         }
         getByName("release") {
+            setCommonBuildConfig(this)
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
@@ -65,4 +70,9 @@ dependencies {
     Deps.libraries.forEach { implementation(it) }
     Deps.uiLibrary.forEach { implementation(it) }
     Deps.testLibraries.forEach { testImplementation(it) }
+}
+
+fun setCommonBuildConfig(buildType: BuildType) {
+    buildType.buildConfigField("String", "API_DOMAIN", "\"${Prop.map["apiDomain"]}\"")
+    buildType.buildConfigField("String", "HTML_DOMAIN", "\"${Prop.map["htmlDomain"]}\"")
 }
