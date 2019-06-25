@@ -2,28 +2,19 @@ import com.android.build.gradle.internal.dsl.BuildType
 import de.mannodermaus.gradle.plugins.junit5.junitPlatform
 
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("kotlin-android")
     id("kotlin-android-extensions")
     id("de.mannodermaus.android-junit5")
-    id("jacoco")
 }
 
 Prop.loadProperties("$rootDir/properties/secrets.properties")
 
-jacoco {
-    toolVersion = "0.8.3"
-}
-
 android {
     compileSdkVersion(Deps.Versions.compileSdk)
     defaultConfig {
-        applicationId = "com.sadashi.reader.novel.narou"
         minSdkVersion(Deps.Versions.minSdk)
         targetSdkVersion(Deps.Versions.compileSdk)
-        versionCode = 1
-        versionName = "0.0.1"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         getByName("debug") {
@@ -67,8 +58,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":novel_domain"))
     Deps.libraries.forEach { implementation(it) }
-    Deps.uiLibrary.forEach { implementation(it) }
     Deps.testLibraries.forEach { testImplementation(it) }
 }
 

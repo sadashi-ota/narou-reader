@@ -4,8 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/buildSrc/buildSrc.iml" filepath="$PROJECT_DIR$/buildSrc/buildSrc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/features/core/core.iml" filepath="$PROJECT_DIR$/features/core/core.iml" />
       <module fileurl="file://$PROJECT_DIR$/narou-reader.iml" filepath="$PROJECT_DIR$/narou-reader.iml" />
-      <module fileurl="file://$PROJECT_DIR$/features/novel/novel_infra/novel-novel_infra.iml" filepath="$PROJECT_DIR$/features/novel/novel_infra/novel-novel_infra.iml" />
+      <module fileurl="file://$PROJECT_DIR$/features/novel/novel_domain/novel_domain.iml" filepath="$PROJECT_DIR$/features/novel/novel_domain/novel_domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/features/novel/novel_infra/novel_infra.iml" filepath="$PROJECT_DIR$/features/novel/novel_infra/novel_infra.iml" />
     </modules>
   </component>
 </project>

@@ -1,29 +1,21 @@
 import com.android.build.gradle.internal.dsl.BuildType
 import de.mannodermaus.gradle.plugins.junit5.junitPlatform
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("kotlin-android")
     id("kotlin-android-extensions")
     id("de.mannodermaus.android-junit5")
-    id("jacoco")
 }
 
 Prop.loadProperties("$rootDir/properties/secrets.properties")
 
-jacoco {
-    toolVersion = "0.8.3"
-}
-
 android {
     compileSdkVersion(Deps.Versions.compileSdk)
     defaultConfig {
-        applicationId = "com.sadashi.reader.novel.narou"
         minSdkVersion(Deps.Versions.minSdk)
         targetSdkVersion(Deps.Versions.compileSdk)
-        versionCode = 1
-        versionName = "0.0.1"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         getByName("debug") {
@@ -68,11 +60,16 @@ android {
 
 dependencies {
     Deps.libraries.forEach { implementation(it) }
-    Deps.uiLibrary.forEach { implementation(it) }
     Deps.testLibraries.forEach { testImplementation(it) }
 }
 
 fun setCommonBuildConfig(buildType: BuildType) {
     buildType.buildConfigField("String", "API_DOMAIN", "\"${Prop.map["apiDomain"]}\"")
     buildType.buildConfigField("String", "HTML_DOMAIN", "\"${Prop.map["htmlDomain"]}\"")
+}
+
+tasks.withType<KotlinCompile> {
+    kotlinOptions {
+        freeCompilerArgs = listOf("-XXLanguage:+InlineClasses")
+    }
 }
