@@ -1,6 +1,7 @@
 object Deps {
     object Versions {
         const val compileSdk = 28
+        const val buildTools = "28.0.3"
         const val minSdk = 21
         const val kotlin = "1.3.41"
         const val spek = "2.0.5"
