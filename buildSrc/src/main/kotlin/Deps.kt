@@ -1,15 +1,16 @@
 object Deps {
     object Versions {
         const val compileSdk = 28
+        const val buildTools = "28.0.3"
         const val minSdk = 21
-        const val kotlin = "1.3.40"
+        const val kotlin = "1.3.41"
         const val spek = "2.0.5"
         const val retrofit = "2.5.0"
         const val moshi = "1.8.0"
     }
 
     object Gradle {
-        const val build = "com.android.tools.build:gradle:3.4.1"
+        const val build = "com.android.tools.build:gradle:3.4.2"
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
         const val androidJunit5 = "de.mannodermaus.gradle.plugins:android-junit5:1.4.2.0"
     }
