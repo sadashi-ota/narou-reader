@@ -9,6 +9,7 @@ interface NovelSearchApiClient {
 
     @GET("novelapi/api")
     fun searchNovel(
+        @Query("out") out: String = "json",
         @Query("word") word: String
     ): Single<List<NovelSearchResult>>
 }
