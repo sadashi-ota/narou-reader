@@ -84,6 +84,19 @@ internal object NovelSummaryConverterTest : Spek({
         userid
     )
 
+    describe(".convertToDomainModelForList") {
+        it("Convert NovelSearchResult to NovelSummary") {
+            val result = NovelSummaryConverter.convertToDomainModelForList(listOf(createNovelSearchResult()))
+            assertEquals(1, result.size)
+            assertEquals("ncode", result[0].ncode.value)
+            assertEquals("title", result[0].title)
+            assertEquals("writer", result[0].writer)
+            assertEquals(200, result[0].totalRating)
+            assertEquals(50, result[0].reviewCount)
+            assertEquals(100, result[0].bookmarkCount)
+            assertEquals(Date(1546268400000), result[0].novelUpdatedAt)
+        }
+    }
     describe(".convertToDomainModel") {
         it("Convert NovelSearchResult to NovelSummary") {
             val result = NovelSummaryConverter.convertToDomainModel(createNovelSearchResult())
