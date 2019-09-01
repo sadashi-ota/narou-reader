@@ -3,6 +3,7 @@ package com.sadashi.reader.novel.infra.domain
 import com.sadashi.reader.novel.infra.api.response.NovelDetailResponse
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
+import java.lang.IllegalArgumentException
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlin.test.assertTrue
@@ -41,8 +42,8 @@ internal object NovelDetailConverterTest : Spek({
             assertEquals(defaultBody, domainModel.body)
         }
         context("When ncode is null") {
-            it("throw IllegalStateException") {
-                assertFailsWith<IllegalStateException> {
+            it("throw IllegalArgumentException") {
+                assertFailsWith<IllegalArgumentException> {
                     NovelDetailConverter.convertToDomainModel(
                         createNovelDetailResponse(
                             ncode = null
@@ -62,8 +63,8 @@ internal object NovelDetailConverterTest : Spek({
             }
         }
         context("When novelNo is null") {
-            it("throw IllegalStateException") {
-                assertFailsWith<IllegalStateException> {
+            it("throw IllegalArgumentException") {
+                assertFailsWith<IllegalArgumentException> {
                     NovelDetailConverter.convertToDomainModel(
                         createNovelDetailResponse(
                             novelNo = null
@@ -73,8 +74,8 @@ internal object NovelDetailConverterTest : Spek({
             }
         }
         context("When novelNo does not split to 2 numbers by '/' ") {
-            it("throw IllegalStateException") {
-                assertFailsWith<IllegalStateException> {
+            it("throw IllegalArgumentException") {
+                assertFailsWith<IllegalArgumentException> {
                     NovelDetailConverter.convertToDomainModel(
                         createNovelDetailResponse(
                             novelNo = "novelNo"
@@ -84,8 +85,8 @@ internal object NovelDetailConverterTest : Spek({
             }
         }
         context("title is null") {
-            it("throw IllegalStateException") {
-                assertFailsWith<IllegalStateException> {
+            it("throw IllegalArgumentException") {
+                assertFailsWith<IllegalArgumentException> {
                     NovelDetailConverter.convertToDomainModel(
                         createNovelDetailResponse(
                             title = null
@@ -95,8 +96,8 @@ internal object NovelDetailConverterTest : Spek({
             }
         }
         context("subtitle is null") {
-            it("throw IllegalStateException") {
-                assertFailsWith<IllegalStateException> {
+            it("throw IllegalArgumentException") {
+                assertFailsWith<IllegalArgumentException> {
                     NovelDetailConverter.convertToDomainModel(
                         createNovelDetailResponse(
                             subtitle = null
