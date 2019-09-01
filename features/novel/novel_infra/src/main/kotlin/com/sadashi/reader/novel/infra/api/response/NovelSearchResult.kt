@@ -1,12 +1,20 @@
+@file:Suppress("SpellCheckingInspection")
+
 package com.sadashi.reader.novel.infra.api.response
 
 data class NovelSearchResult(
+    val ncode: String,
+    val title: String,
+    val writer: String,
+    val story: String,
+    val all_point: Int,
+    val review_cnt: Int,
+    val fav_novel_cnt: Int,
+    val novelupdated_at: String,
+    val allcount: Int,
     val all_hyoka_cnt: Int?,
-    val all_point: Int?,
-    val allcount: Int?,
     val biggenre: Int?,
     val end: Int?,
-    val fav_novel_cnt: Int?,
     val general_all_no: Int?,
     val general_firstup: String?,
     val general_lastup: String?,
@@ -23,16 +31,10 @@ data class NovelSearchResult(
     val kaiwaritu: Int?,
     val keyword: String?,
     val length: Int?,
-    val ncode: String?,
     val novel_type: Int?,
-    val novelupdated_at: String?,
     val pc_or_k: Int?,
-    val review_cnt: Int?,
     val sasie_cnt: Int?,
-    val story: String?,
     val time: Int?,
-    val title: String?,
     val updated_at: String?,
-    val userid: Int?,
-    val writer: String?
+    val userid: Int?
 )

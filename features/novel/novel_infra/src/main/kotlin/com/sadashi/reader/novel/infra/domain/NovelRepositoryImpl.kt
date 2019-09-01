@@ -15,7 +15,7 @@ class NovelRepositoryImpl(
     private val ioScheduler: Scheduler
 ) : NovelRepository {
     override fun searchNovel(word: String): Single<List<NovelSummary>> {
-        return searchApiClient.searchNovel(word)
+        return searchApiClient.searchNovel(word = word)
             .map { NovelSummaryConverter.convertToDomainModelForList(it) }
             .subscribeOn(ioScheduler)
     }
