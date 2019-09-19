@@ -4,8 +4,8 @@ object Deps {
         const val buildTools = "28.0.3"
         const val minSdk = 21
         const val kotlin = "1.3.50"
-        const val spek = "2.0.6"
-        const val retrofit = "2.5.0"
+        const val spek = "2.0.7"
+        const val retrofit = "2.6.1"
         const val moshi = "1.8.0"
     }
 
@@ -31,28 +31,28 @@ object Deps {
     private const val material = "com.google.android.material:material:1.0.0"
 
     object RxJava2 {
-        const val java = "io.reactivex.rxjava2:rxjava:2.2.8"
+        const val java = "io.reactivex.rxjava2:rxjava:2.2.12"
         const val android = "io.reactivex.rxjava2:rxandroid:2.1.1"
-        const val kotlin = "io.reactivex.rxjava2:rxkotlin:2.3.0"
+        const val kotlin = "io.reactivex.rxjava2:rxkotlin:2.4.0"
     }
 
     object Retrofit {
-        const val core = "com.squareup.retrofit2:retrofit:${Deps.Versions.retrofit}"
-        const val converterMoshi = "com.squareup.retrofit2:converter-moshi:${Deps.Versions.retrofit}"
-        const val adapterRxJava = "com.squareup.retrofit2:adapter-rxjava2:${Deps.Versions.retrofit}"
+        const val core = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+        const val converterMoshi = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
+        const val adapterRxJava = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
     }
 
     object OkHttp {
-        const val logging = "com.squareup.okhttp3:logging-interceptor:3.14.2"
+        const val logging = "com.squareup.okhttp3:logging-interceptor:3.14.3"
     }
 
     object Moshi {
-        const val core = "com.squareup.moshi:moshi:${Deps.Versions.moshi}"
-        const val kotlin = "com.squareup.moshi:moshi-kotlin:${Deps.Versions.moshi}"
+        const val core = "com.squareup.moshi:moshi:${Versions.moshi}"
+        const val kotlin = "com.squareup.moshi:moshi-kotlin:${Versions.moshi}"
     }
 
     object Jsoup {
-        const val core = "org.jsoup:jsoup:1.11.2"
+        const val core = "org.jsoup:jsoup:1.11.3"
         const val converterJsoup = "pl.droidsonroids.retrofit2:converter-jspoon:1.3.2"
     }
 
@@ -60,8 +60,8 @@ object Deps {
     private const val commonsLang3 = "org.apache.commons:commons-lang3:3.9"
 
     object Spek2 {
-        const val dsl = "org.spekframework.spek2:spek-dsl-jvm:${Deps.Versions.spek}"
-        const val runner = "org.spekframework.spek2:spek-runner-junit5:${Deps.Versions.spek}"
+        const val dsl = "org.spekframework.spek2:spek-dsl-jvm:${Versions.spek}"
+        const val runner = "org.spekframework.spek2:spek-runner-junit5:${Versions.spek}"
     }
 
     private const val mockK = "io.mockk:mockk:1.9.3"
