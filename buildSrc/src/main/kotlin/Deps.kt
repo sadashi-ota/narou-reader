@@ -4,7 +4,7 @@ object Deps {
         const val buildTools = "28.0.3"
         const val minSdk = 21
         const val kotlin = "1.3.50"
-        const val spek = "2.0.6"
+        const val spek = "2.0.7"
         const val retrofit = "2.5.0"
         const val moshi = "1.8.0"
     }
