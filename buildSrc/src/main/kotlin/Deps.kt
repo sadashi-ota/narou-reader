@@ -52,7 +52,7 @@ object Deps {
     }
 
     object Jsoup {
-        const val core = "org.jsoup:jsoup:1.11.2"
+        const val core = "org.jsoup:jsoup:1.11.3"
         const val converterJsoup = "pl.droidsonroids.retrofit2:converter-jspoon:1.3.2"
     }
 
