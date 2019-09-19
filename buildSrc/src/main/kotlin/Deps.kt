@@ -37,9 +37,9 @@ object Deps {
     }
 
     object Retrofit {
-        const val core = "com.squareup.retrofit2:retrofit:${Deps.Versions.retrofit}"
-        const val converterMoshi = "com.squareup.retrofit2:converter-moshi:${Deps.Versions.retrofit}"
-        const val adapterRxJava = "com.squareup.retrofit2:adapter-rxjava2:${Deps.Versions.retrofit}"
+        const val core = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+        const val converterMoshi = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
+        const val adapterRxJava = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
     }
 
     object OkHttp {
@@ -47,8 +47,8 @@ object Deps {
     }
 
     object Moshi {
-        const val core = "com.squareup.moshi:moshi:${Deps.Versions.moshi}"
-        const val kotlin = "com.squareup.moshi:moshi-kotlin:${Deps.Versions.moshi}"
+        const val core = "com.squareup.moshi:moshi:${Versions.moshi}"
+        const val kotlin = "com.squareup.moshi:moshi-kotlin:${Versions.moshi}"
     }
 
     object Jsoup {
@@ -60,8 +60,8 @@ object Deps {
     private const val commonsLang3 = "org.apache.commons:commons-lang3:3.9"
 
     object Spek2 {
-        const val dsl = "org.spekframework.spek2:spek-dsl-jvm:${Deps.Versions.spek}"
-        const val runner = "org.spekframework.spek2:spek-runner-junit5:${Deps.Versions.spek}"
+        const val dsl = "org.spekframework.spek2:spek-dsl-jvm:${Versions.spek}"
+        const val runner = "org.spekframework.spek2:spek-runner-junit5:${Versions.spek}"
     }
 
     private const val mockK = "io.mockk:mockk:1.9.3"
