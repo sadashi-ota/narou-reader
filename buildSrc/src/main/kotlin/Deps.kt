@@ -43,7 +43,7 @@ object Deps {
     }
 
     object OkHttp {
-        const val logging = "com.squareup.okhttp3:logging-interceptor:3.14.2"
+        const val logging = "com.squareup.okhttp3:logging-interceptor:3.14.3"
     }
 
     object Moshi {
