@@ -31,9 +31,9 @@ object Deps {
     private const val material = "com.google.android.material:material:1.0.0"
 
     object RxJava2 {
-        const val java = "io.reactivex.rxjava2:rxjava:2.2.8"
+        const val java = "io.reactivex.rxjava2:rxjava:2.2.12"
         const val android = "io.reactivex.rxjava2:rxandroid:2.1.1"
-        const val kotlin = "io.reactivex.rxjava2:rxkotlin:2.3.0"
+        const val kotlin = "io.reactivex.rxjava2:rxkotlin:2.4.0"
     }
 
     object Retrofit {
