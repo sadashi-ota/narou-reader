@@ -28,7 +28,7 @@ object Deps {
         const val recyclerview = "androidx.recyclerview:recyclerview:1.0.0"
     }
 
-    const val material = "com.google.android.material:material:1.0.0"
+    private const val material = "com.google.android.material:material:1.0.0"
 
     object RxJava2 {
         const val java = "io.reactivex.rxjava2:rxjava:2.2.12"
@@ -56,17 +56,17 @@ object Deps {
         const val converterJsoup = "pl.droidsonroids.retrofit2:converter-jspoon:1.3.2"
     }
 
-    const val picasso = "com.squareup.picasso:picasso:2.71828"
-    const val commonsLang3 = "org.apache.commons:commons-lang3:3.9"
+    private const val picasso = "com.squareup.picasso:picasso:2.71828"
+    private const val commonsLang3 = "org.apache.commons:commons-lang3:3.9"
 
     object Spek2 {
         const val dsl = "org.spekframework.spek2:spek-dsl-jvm:${Versions.spek}"
         const val runner = "org.spekframework.spek2:spek-runner-junit5:${Versions.spek}"
     }
 
-    const val mockK = "io.mockk:mockk:1.9.3"
+    private const val mockK = "io.mockk:mockk:1.9.3"
 
-    val libraries = listOf(
+    val frameworkLibraries = listOf(
         Kotlin.std,
         Kotlin.reflect,
         RxJava2.java,

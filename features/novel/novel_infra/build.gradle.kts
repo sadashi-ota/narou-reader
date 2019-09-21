@@ -14,7 +14,7 @@ android {
 
 dependencies {
     implementation(project(":novel_domain"))
-    Deps.libraries.forEach { implementation(it) }
+    Deps.frameworkLibraries.forEach { implementation(it) }
     Deps.infraLibraries.forEach { implementation(it) }
     Deps.testLibraries.forEach { testImplementation(it) }
 }

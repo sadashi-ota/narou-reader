@@ -15,7 +15,7 @@ android {
 }
 
 dependencies {
-    Deps.libraries.forEach { implementation(it) }
+    Deps.frameworkLibraries.forEach { implementation(it) }
     Deps.testLibraries.forEach { testImplementation(it) }
 }
 
