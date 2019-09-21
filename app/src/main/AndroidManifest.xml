@@ -1,10 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:dist="http://schemas.android.com/apk/distribution"
-          package="com.sadashi.reader.novel.narou">
+          package="com.sadashi.novel.reader.narou">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <dist:module
             dist:instant="true"/>
-    <application android:allowBackup="true"
+
+    <application android:allowBackup="false"
                  android:label="@string/app_name"
                  android:icon="@mipmap/ic_launcher"
                  android:roundIcon="@mipmap/ic_launcher_round"

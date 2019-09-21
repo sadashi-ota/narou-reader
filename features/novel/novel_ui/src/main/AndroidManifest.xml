@@ -1,2 +1,1 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.sadashi.client.novel.ui" />
+<manifest package="com.sadashi.novel.reader.narou.ui" />
