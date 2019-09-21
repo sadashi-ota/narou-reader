@@ -2,9 +2,9 @@ include(":app")
 
 val featuresDir = File("features")
 
-include(":core")
+include(":core", ":resource")
 project(":core").projectDir = File(featuresDir, "core")
-
+project(":resource").projectDir = File(featuresDir, "resource")
 
 val novelModuleDir = File(featuresDir, "novel")
 
