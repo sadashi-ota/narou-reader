@@ -7,6 +7,7 @@ object Deps {
         const val spek = "2.0.7"
         const val retrofit = "2.6.1"
         const val moshi = "1.8.0"
+        const val dagger = "2.24"
     }
 
     object Gradle {
@@ -29,6 +30,11 @@ object Deps {
     }
 
     private const val material = "com.google.android.material:material:1.0.0"
+
+    object Dagger {
+        const val core = "com.google.dagger:dagger:${Versions.dagger}"
+        const val compiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
+    }
 
     object RxJava2 {
         const val java = "io.reactivex.rxjava2:rxjava:2.2.12"

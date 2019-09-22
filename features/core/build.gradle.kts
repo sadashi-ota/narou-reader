@@ -13,6 +13,7 @@ android {
 }
 
 dependencies {
+    Deps.uiLibraries.forEach { implementation(it) }
     Deps.frameworkLibraries.forEach { implementation(it) }
     Deps.testLibraries.forEach { testImplementation(it) }
 }

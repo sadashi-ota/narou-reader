@@ -19,9 +19,13 @@ android {
 }
 
 dependencies {
+    implementation(project(":core"))
     implementation(project(":resource"))
-    Deps.frameworkLibraries.forEach { implementation(it) }
+    implementation(project(":novel_ui"))
+
     Deps.uiLibraries.forEach { implementation(it) }
-    Deps.testLibraries.forEach { testImplementation(it) }
+
+    implementation(Deps.Dagger.core)
+    kapt(Deps.Dagger.compiler)
 }
 

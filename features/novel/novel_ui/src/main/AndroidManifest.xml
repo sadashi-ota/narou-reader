@@ -1,1 +1,10 @@
-<manifest package="com.sadashi.novel.reader.narou.ui" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sadashi.novel.reader.narou.ui">
+
+    <application>
+        <activity
+            android:name=".search.view.NovelSearchActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar" />
+    </application>
+</manifest>

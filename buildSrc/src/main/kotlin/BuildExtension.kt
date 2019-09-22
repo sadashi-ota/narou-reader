@@ -8,6 +8,7 @@ import org.gradle.plugin.use.PluginDependenciesSpec
 fun PluginDependenciesSpec.basePlugin() {
     id("kotlin-android")
     id("kotlin-android-extensions")
+    id("kotlin-kapt")
     id("de.mannodermaus.android-junit5")
     id("jacoco")
 }

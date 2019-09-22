@@ -16,6 +16,10 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":resource"))
     implementation(project(":novel_domain"))
+
+    implementation(Deps.Dagger.core)
+    kapt(Deps.Dagger.compiler)
+
     Deps.frameworkLibraries.forEach { implementation(it) }
     Deps.uiLibraries.forEach { implementation(it) }
     Deps.testLibraries.forEach { testImplementation(it) }
