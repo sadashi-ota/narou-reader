@@ -12,7 +12,7 @@ android {
     baseConfiguration()
 
     defaultConfig {
-        applicationId = "com.sadashi.novel.reader.narou"
+        applicationId = "jp.sadashi.novel.reader.narou"
         versionCode = 1
         versionName = "0.0.1"
     }
