@@ -10,6 +10,9 @@ class MyApplication : DIApplication() {
 
     override fun onCreate() {
         super.onCreate()
+        componentMap[NovelComponent::class] = DaggerNovelComponent.builder()
+            .novelModule(NovelModule(this))
+            .build()
     }
 
     @Suppress("UNCHECKED_CAST")
