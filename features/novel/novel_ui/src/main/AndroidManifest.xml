@@ -1,9 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sadashi.novel.reader.narou.ui">
+    package="com.sadashi.narou.reader.novel.ui">
 
     <application>
         <activity
-            android:name=".search.view.NovelSearchActivity"
+            android:name="com.sadashi.narou.reader.novel.ui.search.view.NovelSearchActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
