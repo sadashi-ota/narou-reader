@@ -8,6 +8,8 @@
       <module fileurl="file://$PROJECT_DIR$/narou-reader.iml" filepath="$PROJECT_DIR$/narou-reader.iml" />
       <module fileurl="file://$PROJECT_DIR$/features/novel/novel_domain/novel_domain.iml" filepath="$PROJECT_DIR$/features/novel/novel_domain/novel_domain.iml" />
       <module fileurl="file://$PROJECT_DIR$/features/novel/novel_infra/novel_infra.iml" filepath="$PROJECT_DIR$/features/novel/novel_infra/novel_infra.iml" />
+      <module fileurl="file://$PROJECT_DIR$/features/novel/novel_ui/novel_ui.iml" filepath="$PROJECT_DIR$/features/novel/novel_ui/novel_ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/features/resource/resource.iml" filepath="$PROJECT_DIR$/features/resource/resource.iml" />
     </modules>
   </component>
 </project>

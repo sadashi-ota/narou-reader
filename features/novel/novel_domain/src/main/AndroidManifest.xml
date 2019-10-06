@@ -1,2 +1,1 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.sadashi.reader.novel.domain"/>
+<manifest package="jp.sadashi.narou.reader.novel.domain" />

@@ -1,0 +1,9 @@
+<resources>
+    <string name="btn_search">search</string>
+    <string name="btn_retry">retry</string>
+
+    <string name="msg_hint_search">Please input novel title.</string>
+    <string name="msg_failed_to_search">Failed to search. Try again....</string>
+    <string name="msg_load_error">Failed to load data. Please reload.</string>
+
+</resources>

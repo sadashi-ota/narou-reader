@@ -12,15 +12,20 @@ android {
     baseConfiguration()
 
     defaultConfig {
-        applicationId = "com.sadashi.reader.novel.narou"
+        applicationId = "jp.sadashi.novel.reader.narou"
         versionCode = 1
         versionName = "0.0.1"
     }
 }
 
 dependencies {
-    Deps.libraries.forEach { implementation(it) }
-    Deps.uiLibrary.forEach { implementation(it) }
-    Deps.testLibraries.forEach { testImplementation(it) }
+    implementation(project(":core"))
+    implementation(project(":resource"))
+    implementation(project(":novel_ui"))
+
+    Deps.uiLibraries.forEach { implementation(it) }
+
+    implementation(Deps.Dagger.core)
+    kapt(Deps.Dagger.compiler)
 }
 

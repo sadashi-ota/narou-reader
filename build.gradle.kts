@@ -17,10 +17,9 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
     }
 }
 
-tasks.create("clean", type = Delete::class) {
+tasks.register("clean", type = Delete::class) {
     delete(rootProject.buildDir)
 }
