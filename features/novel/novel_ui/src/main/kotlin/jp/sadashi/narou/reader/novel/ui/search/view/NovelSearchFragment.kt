@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.google.android.material.snackbar.Snackbar
 import jp.sadashi.narou.reader.novel.NovelComponent
 import jp.sadashi.narou.reader.novel.core.di.DIApplication
@@ -84,6 +85,8 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
             KeyboardUtil.hide(it)
         }
 
+        val itemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+        novelListView.addItemDecoration(itemDecoration)
         novelListView.adapter = adapter
         adapter.clickListener = presenter.selectNovel
     }
