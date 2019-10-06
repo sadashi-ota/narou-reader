@@ -3,6 +3,8 @@ import com.android.build.gradle.internal.dsl.BuildType
 import de.mannodermaus.gradle.plugins.junit5.junitPlatform
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
+import org.gradle.api.artifacts.dsl.DependencyHandler
+import org.gradle.kotlin.dsl.DependencyHandlerScope
 import org.gradle.plugin.use.PluginDependenciesSpec
 
 fun PluginDependenciesSpec.basePlugin() {

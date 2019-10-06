@@ -1,12 +1,17 @@
 package jp.sadashi.narou.reader.novel.ui.search.presentation
 
+import jp.sadashi.narou.reader.novel.domain.dto.NovelSummary
+
 interface NovelSearchContract {
     interface Presentation {
         fun setUp(view: View)
-        fun search()
+        fun search(word: String)
+        val selectNovel: (NovelSummary) -> Unit
     }
 
     interface View {
+        fun showList(dtoList: List<NovelSummary>)
+        fun clearList()
         fun showProgress()
         fun dismissProgress()
         fun showErrorDialog(throwable: Throwable)

@@ -8,11 +8,13 @@ import jp.sadashi.narou.reader.novel.infra.api.NovelDetailApiClient
 import jp.sadashi.narou.reader.novel.infra.api.NovelSearchApiClient
 import io.reactivex.Scheduler
 import io.reactivex.Single
+import javax.inject.Inject
+import javax.inject.Named
 
-class NovelRepositoryImpl(
+class NovelRepositoryImpl @Inject constructor(
     private val searchApiClient: NovelSearchApiClient,
     private val detailApiClient: NovelDetailApiClient,
-    private val ioScheduler: Scheduler
+    @Named("io") private val ioScheduler: Scheduler
 ) : NovelRepository {
     override fun searchNovel(word: String): Single<List<NovelSummary>> {
         return searchApiClient.searchNovel(word = word)

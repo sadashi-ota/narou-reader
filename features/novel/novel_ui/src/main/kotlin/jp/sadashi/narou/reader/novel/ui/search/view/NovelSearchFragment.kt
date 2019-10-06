@@ -6,11 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
 import jp.sadashi.narou.reader.novel.NovelComponent
 import jp.sadashi.narou.reader.novel.core.di.DIApplication
+import jp.sadashi.narou.reader.novel.core.view.KeyboardUtil
+import jp.sadashi.narou.reader.novel.domain.dto.NovelSummary
 import jp.sadashi.narou.reader.novel.ui.R
 import jp.sadashi.narou.reader.novel.ui.search.presentation.NovelSearchContract
+import kotlinx.android.synthetic.main.fragment_search.novelListView
 import kotlinx.android.synthetic.main.fragment_search.progressBar
+import kotlinx.android.synthetic.main.fragment_search.rootLayout
+import kotlinx.android.synthetic.main.fragment_search.searchButton
+import kotlinx.android.synthetic.main.fragment_search.searchWordEditText
 import kotlinx.android.synthetic.main.fragment_search.toolbar
 import javax.inject.Inject
 
@@ -21,6 +28,9 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
 
     @Inject
     internal lateinit var presenter: NovelSearchContract.Presentation
+
+    @Inject
+    internal lateinit var adapter: NovelListAdapter
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
@@ -43,6 +53,14 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
         initializeUi()
     }
 
+    override fun showList(dtoList: List<NovelSummary>) {
+        adapter.collection = dtoList
+    }
+
+    override fun clearList() {
+        adapter.collection = emptyList()
+    }
+
     override fun showProgress() {
         progressBar.visibility = View.VISIBLE
     }
@@ -52,12 +70,25 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
     }
 
     override fun showErrorDialog(throwable: Throwable) {
-        TODO("Not implements...")
+        Snackbar.make(rootLayout, R.string.msg_failed_to_search, Snackbar.LENGTH_LONG)
+            .setAction(R.string.btn_retry) { search() }
+            .show()
     }
 
     private fun initializeUi() {
         toolbar.also {
             it.setTitle(R.string.app_name)
         }
+        searchButton.setOnClickListener {
+            search()
+            KeyboardUtil.hide(it)
+        }
+
+        novelListView.adapter = adapter
+        adapter.clickListener = presenter.selectNovel
+    }
+
+    private fun search() {
+        presenter.search(searchWordEditText.text.toString())
     }
 }

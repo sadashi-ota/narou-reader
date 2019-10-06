@@ -16,6 +16,7 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":resource"))
     implementation(project(":novel_domain"))
+    implementation(project(":novel_infra"))
 
     implementation(Deps.Dagger.core)
     kapt(Deps.Dagger.compiler)
