@@ -4,14 +4,14 @@ object Deps {
         const val buildTools = "28.0.3"
         const val minSdk = 21
         const val kotlin = "1.3.50"
-        const val spek = "2.0.7"
+        const val spek = "2.0.8"
         const val retrofit = "2.6.1"
         const val moshi = "1.8.0"
         const val dagger = "2.24"
     }
 
     object Gradle {
-        const val build = "com.android.tools.build:gradle:3.5.0"
+        const val build = "com.android.tools.build:gradle:3.5.1"
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
         const val androidJunit5 = "de.mannodermaus.gradle.plugins:android-junit5:1.5.1.0"
     }
