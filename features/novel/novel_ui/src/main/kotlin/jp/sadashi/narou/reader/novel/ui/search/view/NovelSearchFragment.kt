@@ -37,7 +37,7 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
         super.onAttach(context)
         context ?: return
 
-        DIApplication.get(context).getInjector(NovelInjector::class).execute(context, this)
+        DIApplication.get(context).getInjector(NovelInjector::class).inject(this)
 
         presenter.setUp(this)
     }

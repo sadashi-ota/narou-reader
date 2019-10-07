@@ -26,6 +26,5 @@ abstract class DIApplication : Application() {
         }
     }
 
-    abstract fun <T : Component> getComponent(componentClass: KClass<T>): T
     abstract fun <T : Injector> getInjector(injectorClass: KClass<T>): T
 }
