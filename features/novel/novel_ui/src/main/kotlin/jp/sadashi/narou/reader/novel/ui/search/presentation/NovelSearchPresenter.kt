@@ -8,7 +8,7 @@ import jp.sadashi.narou.reader.novel.domain.dto.NovelSummary
 import javax.inject.Inject
 import javax.inject.Named
 
-internal class NovelSearchPresenter @Inject constructor(
+class NovelSearchPresenter @Inject constructor(
     private val novelRepository: NovelRepository,
     @Named("ui") private val uiScheduler: Scheduler
 ) : NovelSearchContract.Presentation {

@@ -7,18 +7,18 @@ import kotlin.reflect.KClass
 
 abstract class DIApplication : Application() {
     companion object {
-        fun get(context: FragmentActivity?): jp.sadashi.narou.reader.novel.core.di.DIApplication {
+        fun get(context: FragmentActivity?): DIApplication {
             val app = context?.applicationContext
-            if (app is jp.sadashi.narou.reader.novel.core.di.DIApplication) {
+            if (app is DIApplication) {
                 return app
             } else {
                 throw ClassCastException("application must implement ContainerApplication")
             }
         }
 
-        fun get(context: Context): jp.sadashi.narou.reader.novel.core.di.DIApplication {
+        fun get(context: Context): DIApplication {
             val app = context.applicationContext
-            if (app is jp.sadashi.narou.reader.novel.core.di.DIApplication) {
+            if (app is DIApplication) {
                 return app
             } else {
                 throw ClassCastException("application must implement ContainerApplication")
@@ -26,5 +26,5 @@ abstract class DIApplication : Application() {
         }
     }
 
-    abstract fun <T : jp.sadashi.narou.reader.novel.core.di.Component> getComponent(componentClass: KClass<T>): T
+    abstract fun <T : Injector> getInjector(injectorClass: KClass<T>): T
 }

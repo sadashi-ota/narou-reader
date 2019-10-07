@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.google.android.material.snackbar.Snackbar
-import jp.sadashi.narou.reader.novel.NovelComponent
 import jp.sadashi.narou.reader.novel.core.di.DIApplication
 import jp.sadashi.narou.reader.novel.core.view.KeyboardUtil
 import jp.sadashi.narou.reader.novel.domain.dto.NovelSummary
 import jp.sadashi.narou.reader.novel.ui.R
+import jp.sadashi.narou.reader.novel.ui.search.NovelInjector
 import jp.sadashi.narou.reader.novel.ui.search.presentation.NovelSearchContract
 import kotlinx.android.synthetic.main.fragment_search.novelListView
 import kotlinx.android.synthetic.main.fragment_search.progressBar
@@ -37,7 +37,7 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
         super.onAttach(context)
         context ?: return
 
-        DIApplication.get(context).getComponent(NovelComponent::class).inject(this)
+        DIApplication.get(context).getInjector(NovelInjector::class).inject(this)
 
         presenter.setUp(this)
     }
