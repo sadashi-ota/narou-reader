@@ -21,6 +21,7 @@ android {
 dependencies {
     implementation(project(":core"))
     implementation(project(":resource"))
+    implementation(project(":novel_di"))
     implementation(project(":novel_ui"))
 
     Deps.uiLibraries.forEach { implementation(it) }

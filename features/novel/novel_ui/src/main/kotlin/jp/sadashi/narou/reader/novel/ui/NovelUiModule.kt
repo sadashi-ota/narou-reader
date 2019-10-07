@@ -6,7 +6,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-internal class NovelUiModule {
+class NovelUiModule {
     @Provides
     fun provideNovelSearchContractPresentation(presenter: NovelSearchPresenter): NovelSearchContract.Presentation {
         return presenter
