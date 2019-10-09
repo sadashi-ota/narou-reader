@@ -1,10 +1,19 @@
 package jp.sadashi.narou.reader.novel.domain
 
-import jp.sadashi.narou.reader.novel.domain.dto.NovelDetail
-import jp.sadashi.narou.reader.novel.domain.dto.NovelSummary
 import io.reactivex.Single
+import jp.sadashi.narou.reader.novel.domain.dto.NovelDetail
+import jp.sadashi.narou.reader.novel.domain.dto.NovelSearchResult
 
 interface NovelRepository {
-    fun searchNovel(word: String): Single<List<NovelSummary>>
+    companion object {
+        const val LIMIT_OF_SEARCH_COUNT = 100
+    }
+
+    fun searchNovel(
+        word: String,
+        page: Int = 1,
+        limit: Int = LIMIT_OF_SEARCH_COUNT
+    ): Single<NovelSearchResult>
+
     fun getNovelDetail(ncode: NCode, page: Int): Single<NovelDetail>
 }

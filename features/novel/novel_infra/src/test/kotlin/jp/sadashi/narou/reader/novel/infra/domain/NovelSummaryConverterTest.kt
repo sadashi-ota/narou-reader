@@ -2,7 +2,7 @@
 
 package jp.sadashi.narou.reader.novel.infra.domain
 
-import jp.sadashi.narou.reader.novel.infra.api.response.NovelSearchResult
+import jp.sadashi.narou.reader.novel.infra.api.response.NovelSearchResponse
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 import java.text.ParseException
@@ -47,7 +47,7 @@ internal object NovelSummaryConverterTest : Spek({
         time: Int? = null,
         updated_at: String? = null,
         userid: Int? = null
-    ) = NovelSearchResult(
+    ) = NovelSearchResponse(
         ncode,
         title,
         writer,
@@ -85,7 +85,7 @@ internal object NovelSummaryConverterTest : Spek({
     )
 
     describe(".convertToDomainModelForList") {
-        it("Convert NovelSearchResult to NovelSummary") {
+        it("Convert NovelSearchResponse to NovelSummary") {
             val result = NovelSummaryConverter.convertToDomainModelForList(listOf(createNovelSearchResult()))
             assertEquals(1, result.size)
             assertEquals("ncode", result[0].ncode.value)
@@ -98,7 +98,7 @@ internal object NovelSummaryConverterTest : Spek({
         }
     }
     describe(".convertToDomainModel") {
-        it("Convert NovelSearchResult to NovelSummary") {
+        it("Convert NovelSearchResponse to NovelSummary") {
             val result = NovelSummaryConverter.convertToDomainModel(createNovelSearchResult())
             assertEquals("ncode", result.ncode.value)
             assertEquals("title", result.title)

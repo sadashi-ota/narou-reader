@@ -6,7 +6,7 @@ import jp.sadashi.narou.reader.novel.domain.dto.NovelSummary
 import jp.sadashi.narou.reader.novel.infra.api.NovelDetailApiClient
 import jp.sadashi.narou.reader.novel.infra.api.NovelSearchApiClient
 import jp.sadashi.narou.reader.novel.infra.api.response.NovelDetailResponse
-import jp.sadashi.narou.reader.novel.infra.api.response.NovelSearchResult
+import jp.sadashi.narou.reader.novel.infra.api.response.NovelSearchResponse
 import io.mockk.confirmVerified
 import io.mockk.every
 import io.mockk.mockk
@@ -36,11 +36,11 @@ internal class NovelRepositoryImplTest : Spek({
 
     describe("#searchNovel") {
         lateinit var mockNovelSummary: NovelSummary
-        lateinit var mockSearchResult: NovelSearchResult
+        lateinit var mockSearchResponse: NovelSearchResponse
 
         beforeEach {
             mockNovelSummary = mockk()
-            mockSearchResult = mockk()
+            mockSearchResponse = mockk()
             mockkObject(NovelSummaryConverter)
         }
         afterEach {
@@ -51,7 +51,7 @@ internal class NovelRepositoryImplTest : Spek({
             beforeEach {
                 every {
                     mockSearchApiClient.searchNovel(word = any())
-                } returns Single.just(listOf(mockSearchResult))
+                } returns Single.just(listOf(mockSearchResponse))
             }
             context("When succeed to convert result") {
                 beforeEach {

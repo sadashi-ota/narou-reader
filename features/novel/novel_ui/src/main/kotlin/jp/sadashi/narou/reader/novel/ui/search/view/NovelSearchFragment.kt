@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import jp.sadashi.narou.reader.novel.core.di.DIApplication
 import jp.sadashi.narou.reader.novel.core.view.KeyboardUtil
@@ -24,6 +26,8 @@ import javax.inject.Inject
 
 class NovelSearchFragment : Fragment(), NovelSearchContract.View {
     companion object {
+        private const val REQUEST_PRELOAD_NUM = 10
+
         fun newInstance() = NovelSearchFragment()
     }
 
@@ -32,6 +36,18 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
 
     @Inject
     internal lateinit var adapter: NovelListAdapter
+
+    private val scrollListener = object : RecyclerView.OnScrollListener() {
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+            val layoutManager = recyclerView.layoutManager as LinearLayoutManager?
+            val lastVisibleItemCount = layoutManager!!.findLastVisibleItemPosition() + 1
+
+            if (!presenter.isAllLoaded() && presenter.loadedItemCount() <= lastVisibleItemCount + REQUEST_PRELOAD_NUM) {
+                presenter.loadNextPage()
+            }
+        }
+    }
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
@@ -85,10 +101,13 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
             KeyboardUtil.hide(it)
         }
 
-        val itemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-        novelListView.addItemDecoration(itemDecoration)
-        novelListView.adapter = adapter
-        adapter.clickListener = presenter.selectNovel
+        novelListView.also {
+            val itemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+            it.addItemDecoration(itemDecoration)
+            it.adapter = adapter
+            adapter.clickListener = presenter.selectNovel
+            it.addOnScrollListener(scrollListener)
+        }
     }
 
     private fun search() {
