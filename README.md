@@ -7,7 +7,7 @@
 
 ## Attentions
 
-本アプリケーションは @sadashi-ota 個人が作成しているもので、株式会社ヒナプロジェクトが提供するものではありません。
+本アプリケーションは [sadashi-ota](https://github.com/sadashi-ota) 個人が作成しているもので、株式会社ヒナプロジェクトが提供するものではありません。
 
 ## Copyright
 
