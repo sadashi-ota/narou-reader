@@ -32,7 +32,7 @@ object NovelSummaryConverter {
     }
 
     private fun convertData(data: String): Date {
-        val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.JAPAN)
+        val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
         return df.parse(data)
     }
 }
