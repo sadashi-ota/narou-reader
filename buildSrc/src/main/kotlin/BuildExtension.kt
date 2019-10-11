@@ -14,7 +14,7 @@ fun PluginDependenciesSpec.basePlugin() {
 }
 
 fun Project.baseProc() {
-    Prop.loadProperties("$rootDir/properties/secrets.properties")
+    Prop.loadProperties("$rootDir/properties/config.properties")
 }
 
 fun BaseExtension.baseConfiguration() {
