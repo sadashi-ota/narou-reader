@@ -1,9 +1,17 @@
 # narou-reader
-Narou novel reader application using to narou novel api.
 
-## Documents
+**本アプリケーションはまだ開発中です。**
 
-[Narou novel API Documents](https://dev.syosetu.com/man/api/)
+このアプリケーションは「[小説家になろう](http://syosetu.com/)」にて公開されている小説のリーダーアプリです。  
+「なろうデベロッパー」で公開されている「[なろう小説API](https://dev.syosetu.com/man/api/)」を利用しています。
+
+## Attentions
+
+本アプリケーションは @sadashi-ota 個人が作成しているもので、株式会社ヒナプロジェクトが提供するものではありません。
+
+## Copyright
+
+「小説家になろう」、「なろうデベロッパー」は株式会社ヒナプロジェクトの登録商標です。
 
 ## Licanse
 
