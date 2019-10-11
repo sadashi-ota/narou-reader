@@ -94,6 +94,9 @@ internal object NovelSummaryConverterTest : Spek({
             assertEquals(200, result[0].totalRating)
             assertEquals(50, result[0].reviewCount)
             assertEquals(100, result[0].bookmarkCount)
+            println("novelUpdatedAt:${result[0].novelUpdatedAt}")
+            println("novelUpdatedAt:${result[0].novelUpdatedAt.time}")
+            println("actual:${Date(1546268400000)}")
             assertEquals(Date(1546268400000), result[0].novelUpdatedAt)
         }
     }
