@@ -21,7 +21,7 @@ internal object NovelSummaryConverterTest : Spek({
         review_cnt: Int = 100,
         fav_novel_cnt: Int = 50,
         novelupdated_at: String = "2019-01-01 00:00:00", // 1546268400000
-        allcount: Int = 300,
+        allcount: Int? = null,
         all_hyoka_cnt: Int? = null,
         biggenre: Int? = null,
         end: Int? = null,
