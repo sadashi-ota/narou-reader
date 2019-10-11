@@ -2,7 +2,7 @@
 
 package jp.sadashi.narou.reader.novel.infra.api.response
 
-data class NovelSearchResult(
+data class NovelSearchResponse(
     val ncode: String?,
     val title: String?,
     val writer: String?,

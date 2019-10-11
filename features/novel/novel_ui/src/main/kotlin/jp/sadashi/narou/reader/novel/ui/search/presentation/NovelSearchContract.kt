@@ -6,6 +6,9 @@ interface NovelSearchContract {
     interface Presentation {
         fun setUp(view: View)
         fun search(word: String)
+        fun loadNextPage()
+        fun isAllLoaded(): Boolean
+        fun loadedItemCount(): Int
         val selectNovel: (NovelSummary) -> Unit
     }
 

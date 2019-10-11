@@ -2,11 +2,10 @@ package jp.sadashi.narou.reader.novel.infra.domain
 
 import jp.sadashi.narou.reader.novel.domain.NCode
 import jp.sadashi.narou.reader.novel.domain.dto.NovelDetail
-import jp.sadashi.narou.reader.novel.domain.dto.NovelSummary
 import jp.sadashi.narou.reader.novel.infra.api.NovelDetailApiClient
 import jp.sadashi.narou.reader.novel.infra.api.NovelSearchApiClient
 import jp.sadashi.narou.reader.novel.infra.api.response.NovelDetailResponse
-import jp.sadashi.narou.reader.novel.infra.api.response.NovelSearchResult
+import jp.sadashi.narou.reader.novel.infra.api.response.NovelSearchResponse
 import io.mockk.confirmVerified
 import io.mockk.every
 import io.mockk.mockk
@@ -15,6 +14,7 @@ import io.mockk.unmockkObject
 import io.mockk.verify
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
+import jp.sadashi.narou.reader.novel.domain.dto.NovelSearchResult
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 
@@ -35,48 +35,48 @@ internal class NovelRepositoryImplTest : Spek({
     }
 
     describe("#searchNovel") {
-        lateinit var mockNovelSummary: NovelSummary
-        lateinit var mockSearchResult: NovelSearchResult
+        lateinit var mockNovelSearchResult: NovelSearchResult
+        lateinit var mockSearchResponse: NovelSearchResponse
 
-        beforeEach {
-            mockNovelSummary = mockk()
-            mockSearchResult = mockk()
-            mockkObject(NovelSummaryConverter)
+        beforeEachTest {
+            mockNovelSearchResult = mockk()
+            mockSearchResponse = mockk()
+            mockkObject(NovelSearchResultConverter)
         }
-        afterEach {
-            unmockkObject(NovelSummaryConverter)
+        afterEachTest {
+            unmockkObject(NovelSearchResultConverter)
         }
 
         context("When succeed to search api") {
-            beforeEach {
+            beforeEachTest {
                 every {
                     mockSearchApiClient.searchNovel(word = any())
-                } returns Single.just(listOf(mockSearchResult))
+                } returns Single.just(listOf(mockSearchResponse))
             }
             context("When succeed to convert result") {
-                beforeEach {
+                beforeEachTest {
                     every {
-                        NovelSummaryConverter.convertToDomainModelForList(any())
-                    } returns listOf(mockNovelSummary)
+                        NovelSearchResultConverter.convertToDomainModel(any())
+                    } returns mockNovelSearchResult
                 }
                 it("succeed to search") {
                     val single = novelRepositoryImpl.searchNovel("word")
                     single.test().await()
                         .assertNoErrors()
                         .assertComplete()
-                        .assertValue(listOf(mockNovelSummary))
+                        .assertValue(mockNovelSearchResult)
 
                     verify(exactly = 1) {
                         mockSearchApiClient.searchNovel(word = "word")
-                        NovelSummaryConverter.convertToDomainModelForList(any())
+                        NovelSearchResultConverter.convertToDomainModel(any())
                     }
-                    confirmVerified(mockSearchApiClient, mockDetailApiClient, NovelSummaryConverter)
+                    confirmVerified(mockSearchApiClient, mockDetailApiClient, NovelSearchResultConverter)
                 }
             }
             context("When failed to convert result") {
-                beforeEach {
+                beforeEachTest {
                     every {
-                        NovelSummaryConverter.convertToDomainModelForList(any())
+                        NovelSearchResultConverter.convertToDomainModel(any())
                     } throws IllegalArgumentException("Failed to convert")
                 }
                 it("failed to search") {
@@ -87,14 +87,14 @@ internal class NovelRepositoryImplTest : Spek({
                         .assertNoValues()
                     verify(exactly = 1) {
                         mockSearchApiClient.searchNovel(word = "word")
-                        NovelSummaryConverter.convertToDomainModelForList(any())
+                        NovelSearchResultConverter.convertToDomainModel(any())
                     }
-                    confirmVerified(mockSearchApiClient, mockDetailApiClient, NovelSummaryConverter)
+                    confirmVerified(mockSearchApiClient, mockDetailApiClient, NovelSearchResultConverter)
                 }
             }
         }
         context("When failed to search api") {
-            beforeEach {
+            beforeEachTest {
                 every {
                     mockSearchApiClient.searchNovel(word = any())
                 } returns Single.error(Throwable("Failed to search"))
@@ -108,7 +108,7 @@ internal class NovelRepositoryImplTest : Spek({
                 verify(exactly = 1) {
                     mockSearchApiClient.searchNovel(word = "word")
                 }
-                confirmVerified(mockSearchApiClient, mockDetailApiClient, NovelSummaryConverter)
+                confirmVerified(mockSearchApiClient, mockDetailApiClient, NovelSearchResultConverter)
             }
         }
     }
@@ -118,22 +118,22 @@ internal class NovelRepositoryImplTest : Spek({
         lateinit var mockResponse: NovelDetailResponse
         val ncodeStr = "ncode"
 
-        beforeEach {
+        beforeEachTest {
             mockNovelDetail = mockk()
             mockResponse = mockk()
             mockkObject(NovelDetailConverter)
         }
-        afterEach {
+        afterEachTest {
             unmockkObject(NovelDetailConverter)
         }
         context("When succeed to get novel detail api") {
-            beforeEach {
+            beforeEachTest {
                 every {
                     mockDetailApiClient.getNovelDetail(ncodeStr, any())
                 } returns Single.just(mockResponse)
             }
             context("When succeed to convert") {
-                beforeEach {
+                beforeEachTest {
                     every {
                         NovelDetailConverter.convertToDomainModel(mockResponse)
                     } returns mockNovelDetail
@@ -153,7 +153,7 @@ internal class NovelRepositoryImplTest : Spek({
                 }
             }
             context("When failed to convert") {
-                beforeEach {
+                beforeEachTest {
                     every {
                         NovelDetailConverter.convertToDomainModel(mockResponse)
                     } throws IllegalArgumentException("Failed to convert")
@@ -174,7 +174,7 @@ internal class NovelRepositoryImplTest : Spek({
             }
         }
         context("When failed to get novel detail api") {
-            beforeEach {
+            beforeEachTest {
                 every {
                     mockDetailApiClient.getNovelDetail(ncodeStr, any())
                 } returns Single.error(Throwable("Failed to get novel detail api"))
