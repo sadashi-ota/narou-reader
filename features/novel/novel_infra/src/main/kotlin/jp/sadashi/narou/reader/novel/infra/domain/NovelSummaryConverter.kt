@@ -6,6 +6,7 @@ import jp.sadashi.narou.reader.novel.infra.api.response.NovelSearchResponse
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import java.util.TimeZone
 
 object NovelSummaryConverter {
 
@@ -32,7 +33,8 @@ object NovelSummaryConverter {
     }
 
     private fun convertData(data: String): Date {
-        val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
+        val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        df.timeZone = TimeZone.getTimeZone("UTC")
         return df.parse(data)
     }
 }
