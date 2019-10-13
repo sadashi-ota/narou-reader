@@ -34,7 +34,6 @@ object NovelSummaryConverter {
 
     private fun convertData(data: String): Date {
         val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-        df.timeZone = TimeZone.getTimeZone("UTC")
         return df.parse(data)
     }
 }
