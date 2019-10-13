@@ -6,11 +6,18 @@ import jp.sadashi.narou.reader.novel.infra.api.response.NovelSearchResponse
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 import java.text.ParseException
+import java.text.SimpleDateFormat
 import java.util.Date
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
 internal object NovelSummaryConverterTest : Spek({
+
+    val timestamp = "2019-01-01 00:00:00"
+
+    fun convertTimestamp(date: Date): String {
+        return SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date)
+    }
 
     fun createNovelSearchResult(
         ncode: String = "ncode",
@@ -20,7 +27,7 @@ internal object NovelSummaryConverterTest : Spek({
         all_point: Int = 200,
         review_cnt: Int = 100,
         fav_novel_cnt: Int = 50,
-        novelupdated_at: String = "2019-01-01 00:00:00", // 1546268400000
+        novelupdated_at: String = timestamp,
         allcount: Int? = null,
         all_hyoka_cnt: Int? = null,
         biggenre: Int? = null,
@@ -94,7 +101,7 @@ internal object NovelSummaryConverterTest : Spek({
             assertEquals(200, result[0].totalRating)
             assertEquals(50, result[0].reviewCount)
             assertEquals(100, result[0].bookmarkCount)
-            assertEquals(Date(1546268400000), result[0].novelUpdatedAt)
+            assertEquals(timestamp,  convertTimestamp(result[0].novelUpdatedAt))
         }
     }
     describe(".convertToDomainModel") {
@@ -106,7 +113,7 @@ internal object NovelSummaryConverterTest : Spek({
             assertEquals(200, result.totalRating)
             assertEquals(50, result.reviewCount)
             assertEquals(100, result.bookmarkCount)
-            assertEquals(Date(1546268400000), result.novelUpdatedAt)
+            assertEquals(timestamp,  convertTimestamp(result.novelUpdatedAt))
         }
         context("When novelupdated_at is invalid format") {
             it("throw ParseException") {
