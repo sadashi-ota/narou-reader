@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +17,7 @@ import jp.sadashi.narou.reader.novel.domain.dto.NovelSummary
 import jp.sadashi.narou.reader.novel.ui.R
 import jp.sadashi.narou.reader.novel.ui.search.NovelInjector
 import jp.sadashi.narou.reader.novel.ui.search.presentation.NovelSearchContract
+import jp.sadashi.narou.reader.novel.ui.search.presentation.NovelSearchResultViewModel
 import kotlinx.android.synthetic.main.fragment_search.novelListView
 import kotlinx.android.synthetic.main.fragment_search.progressBar
 import kotlinx.android.synthetic.main.fragment_search.rootLayout
@@ -55,7 +57,11 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
 
         DIApplication.get(context).getInjector(NovelInjector::class).inject(this)
 
-        presenter.setUp(this)
+        val viewModel = activity?.let {
+            ViewModelProviders.of(it).get(NovelSearchResultViewModel::class.java)
+        } ?: throw IllegalStateException("Activity is null.")
+
+        presenter.setUp(this, viewModel)
     }
 
     override fun onCreateView(

@@ -1,9 +1,7 @@
 package jp.sadashi.narou.reader.novel.ui.search.presentation
 
 import io.reactivex.Scheduler
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-import io.reactivex.rxkotlin.addTo
 import jp.sadashi.narou.reader.novel.domain.NovelRepository
 import jp.sadashi.narou.reader.novel.domain.dto.NovelSummary
 import javax.inject.Inject
@@ -14,59 +12,56 @@ class NovelSearchPresenter @Inject constructor(
     @Named("ui") private val uiScheduler: Scheduler
 ) : NovelSearchContract.Presentation {
     private var disposable: Disposable? = null
-    private var searchWord: String? = null
-    private var loadedPageCount: Int = 0
-    private var allCount = 0
-    private var novelList: MutableList<NovelSummary> = mutableListOf()
+
+    private lateinit var view: NovelSearchContract.View
+    private lateinit var viewModel: NovelSearchResultViewModel
 
     override val selectNovel: (NovelSummary) -> Unit
         get() = {}
 
-    private lateinit var view: NovelSearchContract.View
-
-    override fun setUp(view: NovelSearchContract.View) {
+    override fun setUp(
+        view: NovelSearchContract.View,
+        viewModel: NovelSearchResultViewModel
+    ) {
         this.view = view
+        this.viewModel = viewModel
     }
 
     override fun search(word: String) {
-        searchWord.isNullOrEmpty()
-        searchWord = word
-        loadedPageCount = 0
-        load()
+        load(word, 1)
     }
 
     override fun loadNextPage() {
-        load()
+        val word =
+            viewModel.searchWord ?: throw IllegalStateException("Not doing the first search.")
+        load(word, viewModel.getNextPage())
     }
 
-    override fun isAllLoaded(): Boolean = (novelList.size == allCount)
+    override fun isAllLoaded(): Boolean = viewModel.isAllLoaded()
 
-    override fun loadedItemCount(): Int = novelList.size
+    override fun loadedItemCount(): Int = viewModel.novelList.size
 
-    private fun load() {
+    private fun load(word: String, page: Int) {
         disposable?.let {
             if (!it.isDisposed) {
                 return
             }
         }
 
-        val word = searchWord ?: return
-
-        disposable = novelRepository.searchNovel(word = word, page = loadedPageCount + 1)
+        disposable = novelRepository.searchNovel(word = word, page = page)
             .doOnSubscribe {
                 view.showProgress()
             }
             .observeOn(uiScheduler)
             .subscribe({ result ->
-                if (loadedPageCount == 0) {
-                    novelList.clear()
+                if (page == 0) {
+                    viewModel.clear()
                 }
-                allCount = result.allCount
-                novelList.addAll(result.novelList)
+                viewModel.add(word, result)
+
                 view.dismissProgress()
                 view.clearList()
-                view.showList(novelList)
-                loadedPageCount++
+                view.showList(viewModel.novelList)
             }, { throwable ->
                 view.dismissProgress()
                 view.showErrorDialog(throwable)

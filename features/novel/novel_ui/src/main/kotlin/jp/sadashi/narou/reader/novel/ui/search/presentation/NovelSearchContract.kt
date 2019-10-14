@@ -4,7 +4,7 @@ import jp.sadashi.narou.reader.novel.domain.dto.NovelSummary
 
 interface NovelSearchContract {
     interface Presentation {
-        fun setUp(view: View)
+        fun setUp(view: View, viewModel: NovelSearchResultViewModel)
         fun search(word: String)
         fun loadNextPage()
         fun isAllLoaded(): Boolean
