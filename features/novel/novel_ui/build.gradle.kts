@@ -20,6 +20,9 @@ dependencies {
     implementation(Deps.Dagger.core)
     kapt(Deps.Dagger.compiler)
 
+    implementation(Deps.Lifecycle.extensions)
+    kapt(Deps.Lifecycle.compiler)
+
     Deps.frameworkLibraries.forEach { implementation(it) }
     Deps.uiLibraries.forEach { implementation(it) }
     Deps.testLibraries.forEach { testImplementation(it) }

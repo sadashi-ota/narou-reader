@@ -5,6 +5,7 @@ object Deps {
         const val buildTools = "28.0.3"
         const val minSdk = 21
         const val kotlin = "1.3.50"
+        const val lifecycle = "2.1.0"
         const val spek = "2.0.8"
         const val retrofit = "2.6.1"
         const val moshi = "1.8.0"
@@ -28,6 +29,11 @@ object Deps {
         const val constraint = "androidx.constraintlayout:constraintlayout:1.1.3"
         const val coreKtx = "androidx.core:core-ktx:1.0.2"
         const val recyclerview = "androidx.recyclerview:recyclerview:1.0.0"
+    }
+
+    object Lifecycle {
+        const val extensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
+        const val compiler = "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycle}"
     }
 
     private const val material = "com.google.android.material:material:1.0.0"
