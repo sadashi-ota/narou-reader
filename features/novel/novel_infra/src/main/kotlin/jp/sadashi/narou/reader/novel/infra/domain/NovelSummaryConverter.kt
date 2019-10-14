@@ -6,7 +6,6 @@ import jp.sadashi.narou.reader.novel.infra.api.response.NovelSearchResponse
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import java.util.TimeZone
 
 object NovelSummaryConverter {
 
@@ -23,11 +22,13 @@ object NovelSummaryConverter {
             writer = response.writer ?: throw IllegalArgumentException("writer is null"),
             story = response.story ?: throw IllegalArgumentException("story is null"),
             totalRating = response.all_point ?: throw IllegalArgumentException("all_point is null"),
-            reviewCount = response.review_cnt ?: throw IllegalArgumentException("review_cnt is null"),
+            reviewCount = response.review_cnt
+                ?: throw IllegalArgumentException("review_cnt is null"),
             bookmarkCount = response.fav_novel_cnt
                 ?: throw IllegalArgumentException("fav_novel_cnt is null"),
             novelUpdatedAt = convertData(
-                response.novelupdated_at ?: throw IllegalArgumentException("novelupdated_at is null")
+                response.novelupdated_at
+                    ?: throw IllegalArgumentException("novelupdated_at is null")
             )
         )
     }
