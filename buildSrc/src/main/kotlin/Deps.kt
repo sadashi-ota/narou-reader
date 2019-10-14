@@ -20,6 +20,7 @@ object Deps {
 
     object Kotlin {
         const val std = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
+        const val common = "org.jetbrains.kotlin:kotlin-stdlib-common:${Versions.kotlin}"
         const val reflect = "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
         const val test = "org.jetbrains.kotlin:kotlin-test:${Versions.kotlin}"
     }
@@ -81,6 +82,7 @@ object Deps {
 
     val frameworkLibraries = listOf(
         Kotlin.std,
+        Kotlin.common,
         Kotlin.reflect,
         RxJava2.java,
         RxJava2.android,
