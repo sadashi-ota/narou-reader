@@ -28,6 +28,7 @@ import javax.inject.Inject
 
 class NovelSearchFragment : Fragment(), NovelSearchContract.View {
     companion object {
+        private val KEY_RESTORE = NovelSearchFragment::class.qualifiedName ?: "NovelSearchFragment"
         private const val REQUEST_PRELOAD_NUM = 10
 
         fun newInstance() = NovelSearchFragment()
@@ -74,6 +75,7 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
         super.onViewCreated(view, savedInstanceState)
 
         initializeUi()
+        restore(savedInstanceState)
     }
 
     override fun showList(dtoList: List<NovelSummary>) {
@@ -118,5 +120,15 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
 
     private fun search() {
         presenter.search(searchWordEditText.text.toString())
+    }
+
+    private fun restore(savedInstanceState: Bundle?) {
+        presenter.isExistLoadData() && return
+        savedInstanceState?.let {
+            val word = savedInstanceState.getString(KEY_RESTORE, "")
+            word.isEmpty() && return@let
+
+            presenter.search(word)
+        }
     }
 }

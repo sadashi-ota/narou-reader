@@ -27,6 +27,8 @@ class NovelSearchPresenter @Inject constructor(
         this.viewModel = viewModel
     }
 
+    override fun isExistLoadData(): Boolean = viewModel.searchWord.isNullOrEmpty()
+
     override fun search(word: String) {
         load(word, 1)
     }
