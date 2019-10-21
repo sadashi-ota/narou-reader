@@ -1,6 +1,6 @@
 package jp.sadashi.narou.reader.novel.infra.domain
 
-import jp.sadashi.narou.reader.novel.domain.NCode
+import jp.sadashi.narou.reader.novel.domain.NovelCode
 import jp.sadashi.narou.reader.novel.domain.dto.NovelDetail
 import jp.sadashi.narou.reader.novel.infra.api.NovelDetailApiClient
 import jp.sadashi.narou.reader.novel.infra.api.NovelSearchApiClient
@@ -116,7 +116,7 @@ internal class NovelRepositoryImplTest : Spek({
     describe("#getNovelDetail") {
         lateinit var mockNovelDetail: NovelDetail
         lateinit var mockResponse: NovelDetailResponse
-        val ncodeStr = "ncode"
+        val ncodeStr = "novelCode"
 
         beforeEachTest {
             mockNovelDetail = mockk()
@@ -139,7 +139,7 @@ internal class NovelRepositoryImplTest : Spek({
                     } returns mockNovelDetail
                 }
                 it("succeed to get novel detail api") {
-                    val single = novelRepositoryImpl.getNovelDetail(NCode(ncodeStr), 1)
+                    val single = novelRepositoryImpl.getNovelDetail(NovelCode(ncodeStr), 1)
                     single.test().await()
                         .assertNoErrors()
                         .assertComplete()
@@ -159,7 +159,7 @@ internal class NovelRepositoryImplTest : Spek({
                     } throws IllegalArgumentException("Failed to convert")
                 }
                 it("failed to get novel detail api") {
-                    val single = novelRepositoryImpl.getNovelDetail(NCode(ncodeStr), 1)
+                    val single = novelRepositoryImpl.getNovelDetail(NovelCode(ncodeStr), 1)
                     single.test().await()
                         .assertError(IllegalArgumentException::class.java)
                         .assertNotComplete()
@@ -180,7 +180,7 @@ internal class NovelRepositoryImplTest : Spek({
                 } returns Single.error(Throwable("Failed to get novel detail api"))
             }
             it("failed to get novel detail api") {
-                val single = novelRepositoryImpl.getNovelDetail(NCode(ncodeStr), 1)
+                val single = novelRepositoryImpl.getNovelDetail(NovelCode(ncodeStr), 1)
                 single.test().await()
                     .assertError(Throwable::class.java)
                     .assertNotComplete()

@@ -1,6 +1,6 @@
 package jp.sadashi.narou.reader.novel.infra.domain
 
-import jp.sadashi.narou.reader.novel.domain.NCode
+import jp.sadashi.narou.reader.novel.domain.NovelCode
 import jp.sadashi.narou.reader.novel.domain.dto.NovelSummary
 import jp.sadashi.narou.reader.novel.infra.api.response.NovelSearchResponse
 import java.text.SimpleDateFormat
@@ -17,7 +17,7 @@ object NovelSummaryConverter {
 
     fun convertToDomainModel(response: NovelSearchResponse): NovelSummary {
         return NovelSummary(
-            ncode = NCode(response.ncode ?: throw IllegalArgumentException("ncode is null")),
+            novelCode = NovelCode(response.ncode ?: throw IllegalArgumentException("novelCode is null")),
             title = response.title ?: throw IllegalArgumentException("title is null"),
             writer = response.writer ?: throw IllegalArgumentException("writer is null"),
             story = response.story ?: throw IllegalArgumentException("story is null"),

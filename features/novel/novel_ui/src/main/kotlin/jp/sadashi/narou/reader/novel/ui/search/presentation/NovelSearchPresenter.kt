@@ -15,16 +15,19 @@ class NovelSearchPresenter @Inject constructor(
 
     private lateinit var view: NovelSearchContract.View
     private lateinit var viewModel: NovelSearchResultViewModel
+    private lateinit var transition: NovelSearchTransition
 
     override val selectNovel: (NovelSummary) -> Unit
-        get() = {}
+        get() = { transition.moveNovelDetail(it.novelCode) }
 
     override fun setUp(
         view: NovelSearchContract.View,
-        viewModel: NovelSearchResultViewModel
+        viewModel: NovelSearchResultViewModel,
+        transition: NovelSearchTransition
     ) {
         this.view = view
         this.viewModel = viewModel
+        this.transition = transition
     }
 
     override fun isExistLoadData(): Boolean = !viewModel.searchWord.isNullOrEmpty()

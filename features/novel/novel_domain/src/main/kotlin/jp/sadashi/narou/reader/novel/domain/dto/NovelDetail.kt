@@ -1,9 +1,9 @@
 package jp.sadashi.narou.reader.novel.domain.dto
 
-import jp.sadashi.narou.reader.novel.domain.NCode
+import jp.sadashi.narou.reader.novel.domain.NovelCode
 
 data class NovelDetail(
-    val ncode: NCode,
+    val ncode: NovelCode,
     val title: String,
     val subtitle: String,
     val page: Int,

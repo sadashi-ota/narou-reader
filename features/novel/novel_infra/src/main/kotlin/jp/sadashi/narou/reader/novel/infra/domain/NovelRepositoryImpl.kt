@@ -2,7 +2,7 @@ package jp.sadashi.narou.reader.novel.infra.domain
 
 import io.reactivex.Scheduler
 import io.reactivex.Single
-import jp.sadashi.narou.reader.novel.domain.NCode
+import jp.sadashi.narou.reader.novel.domain.NovelCode
 import jp.sadashi.narou.reader.novel.domain.NovelRepository
 import jp.sadashi.narou.reader.novel.domain.dto.NovelDetail
 import jp.sadashi.narou.reader.novel.domain.dto.NovelSearchResult
@@ -22,7 +22,7 @@ class NovelRepositoryImpl @Inject constructor(
             .subscribeOn(ioScheduler)
     }
 
-    override fun getNovelDetail(ncode: NCode, page: Int): Single<NovelDetail> {
+    override fun getNovelDetail(ncode: NovelCode, page: Int): Single<NovelDetail> {
         return detailApiClient.getNovelDetail(ncode = ncode.value, page = page)
             .map { NovelDetailConverter.convertToDomainModel(it) }
             .subscribeOn(ioScheduler)

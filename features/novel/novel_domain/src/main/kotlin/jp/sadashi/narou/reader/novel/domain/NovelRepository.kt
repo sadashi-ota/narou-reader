@@ -15,5 +15,5 @@ interface NovelRepository {
         limit: Int = LIMIT_OF_SEARCH_COUNT
     ): Single<NovelSearchResult>
 
-    fun getNovelDetail(ncode: NCode, page: Int): Single<NovelDetail>
+    fun getNovelDetail(ncode: NovelCode, page: Int): Single<NovelDetail>
 }

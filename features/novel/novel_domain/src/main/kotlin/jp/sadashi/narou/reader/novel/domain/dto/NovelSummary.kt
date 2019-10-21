@@ -1,10 +1,10 @@
 package jp.sadashi.narou.reader.novel.domain.dto
 
-import jp.sadashi.narou.reader.novel.domain.NCode
+import jp.sadashi.narou.reader.novel.domain.NovelCode
 import java.util.Date
 
 data class NovelSummary(
-    val ncode: NCode,
+    val novelCode: NovelCode,
     val title: String,
     val writer: String,
     val story: String,

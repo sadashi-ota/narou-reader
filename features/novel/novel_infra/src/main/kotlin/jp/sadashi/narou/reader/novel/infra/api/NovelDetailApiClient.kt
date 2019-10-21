@@ -6,9 +6,9 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface NovelDetailApiClient {
-    @GET("{ncode}/{page}")
+    @GET("{novelCode}/{page}")
     fun getNovelDetail(
-        @Path("ncode") ncode: String,
+        @Path("novelCode") ncode: String,
         @Path("page") page: Int
     ): Single<NovelDetailResponse>
 }
