@@ -27,9 +27,15 @@ class NovelSearchPresenter @Inject constructor(
         this.viewModel = viewModel
     }
 
-    override fun isExistLoadData(): Boolean = viewModel.searchWord.isNullOrEmpty()
+    override fun isExistLoadData(): Boolean = !viewModel.searchWord.isNullOrEmpty()
 
     override fun search(word: String) {
+        load(word, 1)
+    }
+
+    override fun refresh() {
+        val word =
+            viewModel.searchWord ?: throw IllegalStateException("Not doing the first search.")
         load(word, 1)
     }
 
@@ -42,6 +48,8 @@ class NovelSearchPresenter @Inject constructor(
     override fun isAllLoaded(): Boolean = viewModel.isAllLoaded()
 
     override fun loadedItemCount(): Int = viewModel.novelList.size
+
+    override fun getWord(): String? = viewModel.searchWord
 
     private fun load(word: String, page: Int) {
         disposable?.let {

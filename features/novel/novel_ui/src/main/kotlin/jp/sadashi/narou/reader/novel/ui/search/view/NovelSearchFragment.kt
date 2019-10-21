@@ -78,6 +78,11 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
         restore(savedInstanceState)
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(KEY_RESTORE, presenter.getWord())
+    }
+
     override fun showList(dtoList: List<NovelSummary>) {
         adapter.collection = dtoList
     }
@@ -123,7 +128,10 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
     }
 
     private fun restore(savedInstanceState: Bundle?) {
-        presenter.isExistLoadData() && return
+        if (presenter.isExistLoadData()) {
+            presenter.refresh()
+            return
+        }
         savedInstanceState?.let {
             val word = savedInstanceState.getString(KEY_RESTORE, "")
             word.isEmpty() && return@let
