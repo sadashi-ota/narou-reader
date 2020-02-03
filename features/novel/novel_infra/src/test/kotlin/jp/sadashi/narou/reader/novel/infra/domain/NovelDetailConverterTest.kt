@@ -53,10 +53,10 @@ internal object NovelDetailConverterTest : Spek({
             }
         }
         context("When novelCode includes '/'") {
-            it("excludes '/' from novelCode") {
+            it("excludes '/' from novel/Code") {
                 val domainModel = NovelDetailConverter.convertToDomainModel(
                     createNovelDetailResponse(
-                        ncode = "n/code"
+                        ncode = "novel/Code"
                     )
                 )
                 assertEquals("novelCode", domainModel.ncode.value)
