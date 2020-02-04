@@ -8,11 +8,13 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import jp.sadashi.narou.reader.novel.infra.NovelInfraModule
 import jp.sadashi.narou.reader.novel.ui.NovelUiModule
+import jp.sadashi.narou.reader.novel.usecase.NovelUseCaseModule
 import javax.inject.Named
 
 @Module(
     includes = [
         NovelUiModule::class,
+        NovelUseCaseModule::class,
         NovelInfraModule::class
     ]
 )

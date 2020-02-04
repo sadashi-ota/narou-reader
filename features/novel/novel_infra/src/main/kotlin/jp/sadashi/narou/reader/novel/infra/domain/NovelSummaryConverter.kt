@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-object NovelSummaryConverter {
+internal object NovelSummaryConverter {
 
     fun convertToDomainModelForList(responses: List<NovelSearchResponse>): List<NovelSummary> {
         return responses

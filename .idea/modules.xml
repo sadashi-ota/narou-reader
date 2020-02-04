@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/features/novel/novel_domain/novel_domain.iml" filepath="$PROJECT_DIR$/features/novel/novel_domain/novel_domain.iml" group="narou-reader/novel_domain" />
       <module fileurl="file://$PROJECT_DIR$/features/novel/novel_infra/novel_infra.iml" filepath="$PROJECT_DIR$/features/novel/novel_infra/novel_infra.iml" group="narou-reader/novel_infra" />
       <module fileurl="file://$PROJECT_DIR$/features/novel/novel_ui/novel_ui.iml" filepath="$PROJECT_DIR$/features/novel/novel_ui/novel_ui.iml" group="narou-reader/novel_ui" />
+      <module fileurl="file://$PROJECT_DIR$/features/novel/novel_usecase/novel_usecase.iml" filepath="$PROJECT_DIR$/features/novel/novel_usecase/novel_usecase.iml" group="narou-reader/novel_usecase" />
       <module fileurl="file://$PROJECT_DIR$/features/resource/resource.iml" filepath="$PROJECT_DIR$/features/resource/resource.iml" group="narou-reader/resource" />
     </modules>
   </component>

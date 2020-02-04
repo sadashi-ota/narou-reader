@@ -14,6 +14,7 @@ android {
 dependencies {
     implementation(project(":core"))
     implementation(project(":novel_ui"))
+    implementation(project(":novel_usecase"))
     implementation(project(":novel_domain"))
     implementation(project(":novel_infra"))
 
