@@ -5,7 +5,7 @@ import jp.sadashi.narou.reader.novel.domain.dto.NovelDetail
 import jp.sadashi.narou.reader.novel.infra.api.response.NovelDetailResponse
 import java.lang.IllegalArgumentException
 
-object NovelDetailConverter {
+internal object NovelDetailConverter {
     fun convertToDomainModel(response: NovelDetailResponse): NovelDetail {
         val ncode = response.ncode ?: throw IllegalArgumentException("novelCode is null.")
         val pageStr = response.novelNo ?: throw IllegalArgumentException("novel_no is null.")

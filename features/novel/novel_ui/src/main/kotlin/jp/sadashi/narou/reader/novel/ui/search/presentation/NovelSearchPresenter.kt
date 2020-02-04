@@ -4,11 +4,12 @@ import io.reactivex.Scheduler
 import io.reactivex.disposables.Disposable
 import jp.sadashi.narou.reader.novel.domain.NovelRepository
 import jp.sadashi.narou.reader.novel.domain.dto.NovelSummary
+import jp.sadashi.narou.reader.novel.usecase.SearchNovelUseCase
 import javax.inject.Inject
 import javax.inject.Named
 
 class NovelSearchPresenter @Inject constructor(
-    private val novelRepository: NovelRepository,
+    private val searchNovelUseCase: SearchNovelUseCase,
     @Named("ui") private val uiScheduler: Scheduler
 ) : NovelSearchContract.Presentation {
     private var disposable: Disposable? = null
@@ -61,7 +62,7 @@ class NovelSearchPresenter @Inject constructor(
             }
         }
 
-        disposable = novelRepository.searchNovel(word = word, page = page)
+        disposable = searchNovelUseCase.execute(word = word, page = page)
             .doOnSubscribe {
                 view.showProgress()
             }
