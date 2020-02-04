@@ -4,7 +4,8 @@ object Deps {
         const val compileSdk = 28
         const val buildTools = "28.0.3"
         const val minSdk = 21
-        const val kotlin = "1.3.50"
+        const val kotlin = "1.3.61"
+        const val lifecycle = "2.1.0"
         const val spek = "2.0.8"
         const val retrofit = "2.6.1"
         const val moshi = "1.8.0"
@@ -12,13 +13,14 @@ object Deps {
     }
 
     object Gradle {
-        const val build = "com.android.tools.build:gradle:3.5.1"
+        const val build = "com.android.tools.build:gradle:3.6.0-rc02"
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
         const val androidJunit5 = "de.mannodermaus.gradle.plugins:android-junit5:1.5.1.0"
     }
 
     object Kotlin {
         const val std = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
+        const val common = "org.jetbrains.kotlin:kotlin-stdlib-common:${Versions.kotlin}"
         const val reflect = "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
         const val test = "org.jetbrains.kotlin:kotlin-test:${Versions.kotlin}"
     }
@@ -28,6 +30,11 @@ object Deps {
         const val constraint = "androidx.constraintlayout:constraintlayout:1.1.3"
         const val coreKtx = "androidx.core:core-ktx:1.0.2"
         const val recyclerview = "androidx.recyclerview:recyclerview:1.0.0"
+    }
+
+    object Lifecycle {
+        const val extensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
+        const val compiler = "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycle}"
     }
 
     private const val material = "com.google.android.material:material:1.0.0"
@@ -75,6 +82,7 @@ object Deps {
 
     val frameworkLibraries = listOf(
         Kotlin.std,
+        Kotlin.common,
         Kotlin.reflect,
         RxJava2.java,
         RxJava2.android,

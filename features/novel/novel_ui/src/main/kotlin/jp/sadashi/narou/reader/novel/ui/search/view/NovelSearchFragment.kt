@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +17,8 @@ import jp.sadashi.narou.reader.novel.domain.dto.NovelSummary
 import jp.sadashi.narou.reader.novel.ui.R
 import jp.sadashi.narou.reader.novel.ui.search.NovelInjector
 import jp.sadashi.narou.reader.novel.ui.search.presentation.NovelSearchContract
+import jp.sadashi.narou.reader.novel.ui.search.presentation.NovelSearchResultViewModel
+import jp.sadashi.narou.reader.novel.ui.search.presentation.NovelSearchTransition
 import kotlinx.android.synthetic.main.fragment_search.novelListView
 import kotlinx.android.synthetic.main.fragment_search.progressBar
 import kotlinx.android.synthetic.main.fragment_search.rootLayout
@@ -26,6 +29,7 @@ import javax.inject.Inject
 
 class NovelSearchFragment : Fragment(), NovelSearchContract.View {
     companion object {
+        private val KEY_RESTORE = NovelSearchFragment::class.qualifiedName ?: "NovelSearchFragment"
         private const val REQUEST_PRELOAD_NUM = 10
 
         fun newInstance() = NovelSearchFragment()
@@ -55,7 +59,14 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
 
         DIApplication.get(context).getInjector(NovelInjector::class).inject(this)
 
-        presenter.setUp(this)
+        val screenTransition = (context as? NovelSearchTransition)
+            ?: throw ClassCastException("must cast NovelSearchTransition")
+
+        val viewModel = activity?.let {
+            ViewModelProviders.of(it).get(NovelSearchResultViewModel::class.java)
+        } ?: throw IllegalStateException("Activity is null.")
+
+        presenter.setUp(this, viewModel, screenTransition)
     }
 
     override fun onCreateView(
@@ -68,6 +79,12 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
         super.onViewCreated(view, savedInstanceState)
 
         initializeUi()
+        restore(savedInstanceState)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(KEY_RESTORE, presenter.getWord())
     }
 
     override fun showList(dtoList: List<NovelSummary>) {
@@ -112,5 +129,18 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
 
     private fun search() {
         presenter.search(searchWordEditText.text.toString())
+    }
+
+    private fun restore(savedInstanceState: Bundle?) {
+        if (presenter.isExistLoadData()) {
+            presenter.refresh()
+            return
+        }
+        savedInstanceState?.let {
+            val word = savedInstanceState.getString(KEY_RESTORE, "")
+            word.isEmpty() && return@let
+
+            presenter.search(word)
+        }
     }
 }

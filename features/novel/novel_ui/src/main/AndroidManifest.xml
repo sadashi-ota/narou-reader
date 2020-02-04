@@ -6,5 +6,9 @@
             android:name=".search.view.NovelSearchActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".detail.view.NovelDetailActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 </manifest>

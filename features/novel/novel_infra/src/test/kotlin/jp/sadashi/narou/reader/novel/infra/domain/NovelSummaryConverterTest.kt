@@ -20,7 +20,7 @@ internal object NovelSummaryConverterTest : Spek({
     }
 
     fun createNovelSearchResult(
-        ncode: String = "ncode",
+        ncode: String = "novelCode",
         title: String = "title",
         writer: String = "writer",
         story: String = "story",
@@ -95,7 +95,7 @@ internal object NovelSummaryConverterTest : Spek({
         it("Convert NovelSearchResponse to NovelSummary") {
             val result = NovelSummaryConverter.convertToDomainModelForList(listOf(createNovelSearchResult()))
             assertEquals(1, result.size)
-            assertEquals("ncode", result[0].ncode.value)
+            assertEquals("novelCode", result[0].novelCode.value)
             assertEquals("title", result[0].title)
             assertEquals("writer", result[0].writer)
             assertEquals(200, result[0].totalRating)
@@ -107,7 +107,7 @@ internal object NovelSummaryConverterTest : Spek({
     describe(".convertToDomainModel") {
         it("Convert NovelSearchResponse to NovelSummary") {
             val result = NovelSummaryConverter.convertToDomainModel(createNovelSearchResult())
-            assertEquals("ncode", result.ncode.value)
+            assertEquals("novelCode", result.novelCode.value)
             assertEquals("title", result.title)
             assertEquals("writer", result.writer)
             assertEquals(200, result.totalRating)

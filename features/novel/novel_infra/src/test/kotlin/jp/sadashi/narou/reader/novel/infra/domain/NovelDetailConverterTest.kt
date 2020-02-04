@@ -10,7 +10,7 @@ import kotlin.test.assertTrue
 
 internal object NovelDetailConverterTest : Spek({
 
-    val defaultNcode = "ncode"
+    val defaultNcode = "novelCode"
     val defaultTitle = "title"
     val defaultSubtitle = "subtitle"
     val defaultPage = 1
@@ -41,7 +41,7 @@ internal object NovelDetailConverterTest : Spek({
             assertEquals(defaultMaxPage, domainModel.maxPage)
             assertEquals(defaultBody, domainModel.body)
         }
-        context("When ncode is null") {
+        context("When novelCode is null") {
             it("throw IllegalArgumentException") {
                 assertFailsWith<IllegalArgumentException> {
                     NovelDetailConverter.convertToDomainModel(
@@ -52,14 +52,14 @@ internal object NovelDetailConverterTest : Spek({
                 }
             }
         }
-        context("When ncode includes '/'") {
-            it("excludes '/' from ncode") {
+        context("When novelCode includes '/'") {
+            it("excludes '/' from novel/Code") {
                 val domainModel = NovelDetailConverter.convertToDomainModel(
                     createNovelDetailResponse(
-                        ncode = "n/code"
+                        ncode = "novel/Code"
                     )
                 )
-                assertEquals("ncode", domainModel.ncode.value)
+                assertEquals("novelCode", domainModel.ncode.value)
             }
         }
         context("When novelNo is null") {

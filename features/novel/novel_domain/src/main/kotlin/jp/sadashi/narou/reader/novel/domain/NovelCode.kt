@@ -1,3 +1,3 @@
 package jp.sadashi.narou.reader.novel.domain
 
-inline class NCode(val value: String)
+inline class NovelCode(val value: String)
