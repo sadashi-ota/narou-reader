@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
@@ -88,11 +87,15 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
     }
 
     override fun showList(dtoList: List<NovelSummary>) {
-        adapter.collection = dtoList
+        adapter.collection = dtoList.toMutableList()
+    }
+
+    override fun update(summary: NovelSummary) {
+        adapter.updateItem(summary)
     }
 
     override fun clearList() {
-        adapter.collection = emptyList()
+        adapter.collection = mutableListOf()
     }
 
     override fun showProgress() {
@@ -119,10 +122,9 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
         }
 
         novelListView.also {
-            val itemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-            it.addItemDecoration(itemDecoration)
             it.adapter = adapter
             adapter.clickListener = presenter.selectNovel
+            adapter.clickBookmarkListener = presenter.bookmarkNovel
             it.addOnScrollListener(scrollListener)
         }
     }

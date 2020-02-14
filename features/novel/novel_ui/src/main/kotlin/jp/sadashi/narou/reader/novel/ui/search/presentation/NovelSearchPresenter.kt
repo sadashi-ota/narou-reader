@@ -21,6 +21,12 @@ class NovelSearchPresenter @Inject constructor(
     override val selectNovel: (NovelSummary) -> Unit
         get() = { transition.moveNovelDetail(it.novelCode) }
 
+    override val bookmarkNovel: (NovelSummary) -> Unit
+        get() = {
+            val summary = viewModel.bookmark(!it.isBookmark, it)
+            view.update(summary)
+        }
+
     override fun setUp(
         view: NovelSearchContract.View,
         viewModel: NovelSearchResultViewModel,

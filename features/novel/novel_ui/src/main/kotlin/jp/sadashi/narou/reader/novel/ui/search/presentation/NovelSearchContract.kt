@@ -19,10 +19,12 @@ interface NovelSearchContract {
         fun getWord(): String?
 
         val selectNovel: (NovelSummary) -> Unit
+        val bookmarkNovel: (NovelSummary) -> Unit
     }
 
     interface View {
         fun showList(dtoList: List<NovelSummary>)
+        fun update(summary: NovelSummary)
         fun clearList()
         fun showProgress()
         fun dismissProgress()

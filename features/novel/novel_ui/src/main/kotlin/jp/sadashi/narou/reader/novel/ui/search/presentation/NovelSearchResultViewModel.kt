@@ -34,4 +34,13 @@ class NovelSearchResultViewModel : ViewModel() {
         allCount = result.allCount
         loadedPageCount++
     }
+
+    fun bookmark(doBookmark: Boolean, summary: NovelSummary): NovelSummary {
+        val index = novelList.indexOf(summary)
+        if (index == -1) {
+            throw IllegalArgumentException("Not found novel to show list. Novel Code: ${summary.novelCode}")
+        }
+        novelList[index] = summary.copy(isBookmark = doBookmark)
+        return novelList[index]
+    }
 }
