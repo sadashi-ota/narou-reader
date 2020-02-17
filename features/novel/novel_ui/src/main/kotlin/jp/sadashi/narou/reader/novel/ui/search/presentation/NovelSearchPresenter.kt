@@ -74,7 +74,7 @@ class NovelSearchPresenter @Inject constructor(
             }
             .observeOn(uiScheduler)
             .subscribe({ result ->
-                if (page == 0) {
+                if (page == 1) {
                     viewModel.clear()
                 }
                 viewModel.add(word, result)
