@@ -56,9 +56,8 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
         }
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
-        context ?: return
 
         DIApplication.get(context).getInjector(NovelInjector::class).inject(this)
 
