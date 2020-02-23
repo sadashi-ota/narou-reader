@@ -9,12 +9,15 @@
     <application
         android:name="jp.sadashi.narou.reader.novel.MyApplication"
         android:allowBackup="false"
-        android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name="jp.sadashi.narou.reader.novel.MainActivity">
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="jp.sadashi.narou.reader.novel.TopActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

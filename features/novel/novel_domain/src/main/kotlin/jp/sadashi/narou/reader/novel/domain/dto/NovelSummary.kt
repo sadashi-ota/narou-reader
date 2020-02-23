@@ -11,5 +11,6 @@ data class NovelSummary(
     val totalRating: Int,
     val reviewCount: Int,
     val bookmarkCount: Int,
-    val novelUpdatedAt: Date
+    val novelUpdatedAt: Date,
+    val isBookmark: Boolean
 )

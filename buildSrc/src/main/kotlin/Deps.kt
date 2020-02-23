@@ -5,11 +5,11 @@ object Deps {
         const val buildTools = "28.0.3"
         const val minSdk = 21
         const val kotlin = "1.3.61"
-        const val lifecycle = "2.1.0"
-        const val spek = "2.0.8"
+        const val lifecycle = "2.2.0"
+        const val spek = "2.0.9"
         const val retrofit = "2.6.1"
         const val moshi = "1.8.0"
-        const val dagger = "2.24"
+        const val dagger = "2.26"
     }
 
     object Gradle {
@@ -26,10 +26,13 @@ object Deps {
     }
 
     object AndroidX {
-        const val appcompat = "androidx.appcompat:appcompat:1.0.2"
+        const val appcompat = "androidx.appcompat:appcompat:1.1.0"
         const val constraint = "androidx.constraintlayout:constraintlayout:1.1.3"
-        const val coreKtx = "androidx.core:core-ktx:1.0.2"
-        const val recyclerview = "androidx.recyclerview:recyclerview:1.0.0"
+        const val coreKtx = "androidx.core:core-ktx:1.2.0"
+        const val activityKtx = "androidx.activity:activity-ktx:1.1.0"
+        const val fragmentKtx = "androidx.fragment:fragment-ktx:1.2.1"
+        const val recyclerview = "androidx.recyclerview:recyclerview:1.1.0"
+        const val viewPager2 = "androidx.viewpager2:viewpager2:1.0.0"
     }
 
     object Lifecycle {
@@ -66,7 +69,7 @@ object Deps {
     }
 
     object Jsoup {
-        const val core = "org.jsoup:jsoup:1.11.3"
+        const val core = "org.jsoup:jsoup:1.12.2"
         const val converterJsoup = "pl.droidsonroids.retrofit2:converter-jspoon:1.3.2"
     }
 
@@ -105,7 +108,10 @@ object Deps {
         AndroidX.appcompat,
         AndroidX.constraint,
         AndroidX.coreKtx,
+        AndroidX.activityKtx,
+        AndroidX.fragmentKtx,
         AndroidX.recyclerview,
+        AndroidX.viewPager2,
         material,
         picasso
     )

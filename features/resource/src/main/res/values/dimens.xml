@@ -9,8 +9,8 @@
     <dimen name="font_text_normal_size">16sp</dimen>
     <dimen name="font_text_small_size">12sp</dimen>
 
-    <dimen name="avatar_image_size">128dp</dimen>
-    <dimen name="item_avatar_image_size">48dp</dimen>
+    <dimen name="general_icon_size">24dp</dimen>
+    <dimen name="item_bookmark_icon_size">24dp</dimen>
 
     <dimen name="search_btn_width">96dp</dimen>
     <dimen name="search_btn_height">48dp</dimen>

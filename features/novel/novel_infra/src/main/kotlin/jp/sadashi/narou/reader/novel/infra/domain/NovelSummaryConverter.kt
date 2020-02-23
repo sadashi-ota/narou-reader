@@ -29,7 +29,8 @@ internal object NovelSummaryConverter {
             novelUpdatedAt = convertData(
                 response.novelupdated_at
                     ?: throw IllegalArgumentException("novelupdated_at is null")
-            )
+            ),
+            isBookmark = false
         )
     }
 

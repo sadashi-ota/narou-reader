@@ -3,11 +3,13 @@ package jp.sadashi.narou.reader.novel.ui.search.view
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
@@ -22,8 +24,6 @@ import jp.sadashi.narou.reader.novel.ui.search.presentation.NovelSearchTransitio
 import kotlinx.android.synthetic.main.fragment_search.novelListView
 import kotlinx.android.synthetic.main.fragment_search.progressBar
 import kotlinx.android.synthetic.main.fragment_search.rootLayout
-import kotlinx.android.synthetic.main.fragment_search.searchButton
-import kotlinx.android.synthetic.main.fragment_search.searchWordEditText
 import kotlinx.android.synthetic.main.fragment_search.toolbar
 import javax.inject.Inject
 
@@ -41,6 +41,9 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
     @Inject
     internal lateinit var adapter: NovelListAdapter
 
+    private lateinit var search: SearchView
+    private lateinit var searchMenu: MenuItem
+
     private val scrollListener = object : RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
@@ -53,9 +56,8 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
         }
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
-        context ?: return
 
         DIApplication.get(context).getInjector(NovelInjector::class).inject(this)
 
@@ -88,11 +90,15 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
     }
 
     override fun showList(dtoList: List<NovelSummary>) {
-        adapter.collection = dtoList
+        adapter.collection = dtoList.toMutableList()
+    }
+
+    override fun update(summary: NovelSummary) {
+        adapter.updateItem(summary)
     }
 
     override fun clearList() {
-        adapter.collection = emptyList()
+        adapter.collection = mutableListOf()
     }
 
     override fun showProgress() {
@@ -112,23 +118,45 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
     private fun initializeUi() {
         toolbar.also {
             it.setTitle(R.string.app_name)
+            it.inflateMenu(R.menu.search)
+            it.setNavigationIcon(R.drawable.ic_search_24dp)
+            it.setNavigationOnClickListener { toggleSearchView() }
+            it.setOnClickListener { toggleSearchView() }
         }
-        searchButton.setOnClickListener {
-            search()
-            KeyboardUtil.hide(it)
+
+        searchMenu = toolbar.menu.findItem(R.id.menu_search)
+        search = (searchMenu.actionView as SearchView).also {
+            it.setIconifiedByDefault(false)
+
+            val icon = it.findViewById<ImageView>(androidx.appcompat.R.id.search_mag_icon)
+            icon.setImageDrawable(null)
+
+            it.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(word: String): Boolean {
+                    search()
+                    return true
+                }
+
+                override fun onQueryTextChange(s: String): Boolean {
+                    return false
+                }
+            })
+        }
+
+        adapter.also {
+            it.clickListener = presenter.selectNovel
+            it.clickBookmarkListener = presenter.bookmarkNovel
         }
 
         novelListView.also {
-            val itemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-            it.addItemDecoration(itemDecoration)
             it.adapter = adapter
-            adapter.clickListener = presenter.selectNovel
             it.addOnScrollListener(scrollListener)
         }
     }
 
     private fun search() {
-        presenter.search(searchWordEditText.text.toString())
+        presenter.search(search.query.toString())
+        hideSearchView()
     }
 
     private fun restore(savedInstanceState: Bundle?) {
@@ -136,11 +164,35 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
             presenter.refresh()
             return
         }
+
         savedInstanceState?.let {
             val word = savedInstanceState.getString(KEY_RESTORE, "")
             word.isEmpty() && return@let
 
             presenter.search(word)
         }
+    }
+
+    private fun toggleSearchView() {
+        if (searchMenu.isVisible) {
+            hideSearchView()
+        } else {
+            showSearchView()
+        }
+    }
+
+    private fun showSearchView() {
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp)
+        search.isIconified = false
+        searchMenu.isVisible = true
+        search.setQuery(presenter.getWord(), false)
+    }
+
+    private fun hideSearchView() {
+        toolbar.setNavigationIcon(R.drawable.ic_search_24dp)
+        search.clearFocus()
+        search.isIconified = true
+        KeyboardUtil.hide(search)
+        searchMenu.isVisible = false
     }
 }
