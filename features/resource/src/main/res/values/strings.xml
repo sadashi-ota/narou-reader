@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">なろう小説リーダー</string>
 
-    <string name="menu_nav_search">探す</string>
-    <string name="menu_nav_bookmark">ブックマーク</string>
     <string name="menu_nav_setting">設定</string>
+    <string name="menu_nav_license">ライセンス</string>
+    <string name="menu_nav_about">このアプリについて</string>
 </resources>

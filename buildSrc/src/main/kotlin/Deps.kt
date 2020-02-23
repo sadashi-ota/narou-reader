@@ -32,6 +32,7 @@ object Deps {
         const val activityKtx = "androidx.activity:activity-ktx:1.1.0"
         const val fragmentKtx = "androidx.fragment:fragment-ktx:1.2.1"
         const val recyclerview = "androidx.recyclerview:recyclerview:1.1.0"
+        const val viewPager2 = "androidx.viewpager2:viewpager2:1.0.0"
     }
 
     object Lifecycle {
@@ -110,6 +111,7 @@ object Deps {
         AndroidX.activityKtx,
         AndroidX.fragmentKtx,
         AndroidX.recyclerview,
+        AndroidX.viewPager2,
         material,
         picasso
     )
