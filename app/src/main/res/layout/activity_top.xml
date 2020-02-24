@@ -25,6 +25,7 @@
                 style="@style/BaseToolbar"
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:navigationIcon="@drawable/ic_menu_24dp"
+                app:menu="@menu/search"
                 app:title="@string/app_name"
                 />
 

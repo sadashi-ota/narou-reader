@@ -118,30 +118,30 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
     private fun initializeUi() {
         toolbar.also {
             it.setTitle(R.string.app_name)
-            it.inflateMenu(R.menu.search)
+//            it.inflateMenu(R.menu.search)
             it.setNavigationIcon(R.drawable.ic_search_24dp)
             it.setNavigationOnClickListener { toggleSearchView() }
             it.setOnClickListener { toggleSearchView() }
         }
 
-        searchMenu = toolbar.menu.findItem(R.id.menu_search)
-        search = (searchMenu.actionView as SearchView).also {
-            it.setIconifiedByDefault(false)
-
-            val icon = it.findViewById<ImageView>(androidx.appcompat.R.id.search_mag_icon)
-            icon.setImageDrawable(null)
-
-            it.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-                override fun onQueryTextSubmit(word: String): Boolean {
-                    search()
-                    return true
-                }
-
-                override fun onQueryTextChange(s: String): Boolean {
-                    return false
-                }
-            })
-        }
+//        searchMenu = toolbar.menu.findItem(R.id.menu_search)
+//        search = (searchMenu.actionView as SearchView).also {
+//            it.setIconifiedByDefault(false)
+//
+//            val icon = it.findViewById<ImageView>(androidx.appcompat.R.id.search_mag_icon)
+//            icon.setImageDrawable(null)
+//
+//            it.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//                override fun onQueryTextSubmit(word: String): Boolean {
+//                    search()
+//                    return true
+//                }
+//
+//                override fun onQueryTextChange(s: String): Boolean {
+//                    return false
+//                }
+//            })
+//        }
 
         adapter.also {
             it.clickListener = presenter.selectNovel
