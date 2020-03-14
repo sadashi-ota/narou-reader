@@ -1,4 +1,3 @@
-
 object Deps {
     object Versions {
         const val compileSdk = 28
@@ -6,9 +5,9 @@ object Deps {
         const val minSdk = 21
         const val kotlin = "1.3.61"
         const val lifecycle = "2.2.0"
-        const val spek = "2.0.9"
-        const val retrofit = "2.6.1"
-        const val moshi = "1.8.0"
+        const val spek = "2.0.10"
+        const val retrofit = "2.7.1"
+        const val moshi = "1.9.2"
         const val dagger = "2.26"
     }
 
@@ -49,7 +48,7 @@ object Deps {
     }
 
     object RxJava2 {
-        const val java = "io.reactivex.rxjava2:rxjava:2.2.12"
+        const val java = "io.reactivex.rxjava2:rxjava:2.2.19"
         const val android = "io.reactivex.rxjava2:rxandroid:2.1.1"
         const val kotlin = "io.reactivex.rxjava2:rxkotlin:2.4.0"
     }
@@ -61,7 +60,7 @@ object Deps {
     }
 
     object OkHttp {
-        const val logging = "com.squareup.okhttp3:logging-interceptor:3.14.3"
+        const val logging = "com.squareup.okhttp3:logging-interceptor:4.4.0"
     }
 
     object Moshi {
