@@ -16,6 +16,7 @@ object Deps {
         const val build = "com.android.tools.build:gradle:3.6.1"
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
         const val androidJunit5 = "de.mannodermaus.gradle.plugins:android-junit5:1.5.1.0"
+        const val versionsPlugin = "com.github.ben-manes:gradle-versions-plugin:0.28.0"
     }
 
     object Kotlin {
