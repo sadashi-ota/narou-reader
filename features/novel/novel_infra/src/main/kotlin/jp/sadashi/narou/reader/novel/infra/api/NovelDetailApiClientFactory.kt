@@ -36,7 +36,7 @@ object NovelDetailApiClientFactory {
             //header
             val request = original.newBuilder()
                 .header("Accept", "text/html")
-                .method(original.method(), original.body())
+                .method(original.method, original.body)
                 .build()
 
             return@Interceptor chain.proceed(request)
