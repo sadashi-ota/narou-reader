@@ -1,21 +1,21 @@
 object Deps {
     object Versions {
-        const val compileSdk = 28
-        const val buildTools = "28.0.3"
-        const val minSdk = 21
-        const val kotlin = "1.3.61"
+        const val compileSdk = 30
+        const val buildTools = "30.0.2"
+        const val minSdk = 24
+        const val kotlin = "1.4.10"
         const val lifecycle = "2.2.0"
-        const val spek = "2.0.10"
-        const val retrofit = "2.7.1"
+        const val spek = "2.0.13"
+        const val retrofit = "2.9.0"
         const val moshi = "1.9.2"
-        const val dagger = "2.26"
+        const val dagger = "2.29.1"
     }
 
     object Gradle {
-        const val build = "com.android.tools.build:gradle:3.6.1"
+        const val build = "com.android.tools.build:gradle:4.0.1"
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
-        const val androidJunit5 = "de.mannodermaus.gradle.plugins:android-junit5:1.5.1.0"
-        const val versionsPlugin = "com.github.ben-manes:gradle-versions-plugin:0.28.0"
+        const val androidJunit5 = "de.mannodermaus.gradle.plugins:android-junit5:1.6.2.0"
+        const val versionsPlugin = "com.github.ben-manes:gradle-versions-plugin:0.33.0"
     }
 
     object Kotlin {
@@ -26,11 +26,11 @@ object Deps {
     }
 
     object AndroidX {
-        const val appcompat = "androidx.appcompat:appcompat:1.1.0"
-        const val constraint = "androidx.constraintlayout:constraintlayout:1.1.3"
-        const val coreKtx = "androidx.core:core-ktx:1.2.0"
+        const val appcompat = "androidx.appcompat:appcompat:1.2.0"
+        const val constraint = "androidx.constraintlayout:constraintlayout:2.0.0"
+        const val coreKtx = "androidx.core:core-ktx:1.3.1"
         const val activityKtx = "androidx.activity:activity-ktx:1.1.0"
-        const val fragmentKtx = "androidx.fragment:fragment-ktx:1.2.1"
+        const val fragmentKtx = "androidx.fragment:fragment-ktx:1.2.5"
         const val recyclerview = "androidx.recyclerview:recyclerview:1.1.0"
         const val viewPager2 = "androidx.viewpager2:viewpager2:1.0.0"
     }
@@ -40,7 +40,7 @@ object Deps {
         const val compiler = "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycle}"
     }
 
-    private const val material = "com.google.android.material:material:1.0.0"
+    private const val material = "com.google.android.material:material:1.2.1"
 
     object Dagger {
         const val core = "com.google.dagger:dagger:${Versions.dagger}"
@@ -60,7 +60,7 @@ object Deps {
     }
 
     object OkHttp {
-        const val logging = "com.squareup.okhttp3:logging-interceptor:4.4.0"
+        const val logging = "com.squareup.okhttp3:logging-interceptor:4.9.0"
     }
 
     object Moshi {
@@ -69,12 +69,12 @@ object Deps {
     }
 
     object Jsoup {
-        const val core = "org.jsoup:jsoup:1.12.2"
+        const val core = "org.jsoup:jsoup:1.13.1"
         const val converterJsoup = "pl.droidsonroids.retrofit2:converter-jspoon:1.3.2"
     }
 
-    private const val picasso = "com.squareup.picasso:picasso:2.71828"
-    private const val commonsLang3 = "org.apache.commons:commons-lang3:3.9"
+    private const val picasso = "com.squareup.picasso:picasso:2.8"
+    private const val commonsLang3 = "org.apache.commons:commons-lang3:3.11"
 
     object Spek2 {
         const val dsl = "org.spekframework.spek2:spek-dsl-jvm:${Versions.spek}"
