@@ -1,3 +1,5 @@
+@file:Suppress("SpellCheckingInspection")
+
 object Deps {
     object Versions {
         const val compileSdk = 30
@@ -12,7 +14,7 @@ object Deps {
     }
 
     object Gradle {
-        const val build = "com.android.tools.build:gradle:4.0.1"
+        const val build = "com.android.tools.build:gradle:4.1.0"
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
         const val androidJunit5 = "de.mannodermaus.gradle.plugins:android-junit5:1.6.2.0"
         const val versionsPlugin = "com.github.ben-manes:gradle-versions-plugin:0.33.0"

@@ -24,3 +24,4 @@ allprojects {
 tasks.register("clean", type = Delete::class) {
     delete(rootProject.buildDir)
 }
+
