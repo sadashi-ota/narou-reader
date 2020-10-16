@@ -16,7 +16,7 @@ object NovelDetailApiClientFactory {
 
     private fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(jp.sadashi.narou.reader.novel.infra.BuildConfig.HTML_DOMAIN)
+            .baseUrl(BuildConfig.HTML_DOMAIN)
             .client(createClient())
             .addConverterFactory(JspoonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -25,7 +25,7 @@ object NovelDetailApiClientFactory {
 
     private fun createClient(): OkHttpClient {
         val okHttpClientBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
-        if (jp.sadashi.narou.reader.novel.infra.BuildConfig.DEBUG) {
+        if (BuildConfig.DEBUG) {
             val loggingInterceptor =
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             okHttpClientBuilder.addInterceptor(loggingInterceptor)
@@ -36,7 +36,7 @@ object NovelDetailApiClientFactory {
             //header
             val request = original.newBuilder()
                 .header("Accept", "text/html")
-                .method(original.method(), original.body())
+                .method(original.method, original.body)
                 .build()
 
             return@Interceptor chain.proceed(request)

@@ -36,17 +36,18 @@ object NovelSearchApiClientFactory {
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             okHttpClientBuilder.addInterceptor(loggingInterceptor)
         }
-        okHttpClientBuilder.addInterceptor(Interceptor { chain ->
+        val interceptor = Interceptor { chain: Interceptor.Chain ->
             val original = chain.request()
 
             //header
             val request = original.newBuilder()
                 .header("Accept", "application/json")
-                .method(original.method(), original.body())
+                .method(original.method, original.body)
                 .build()
 
             return@Interceptor chain.proceed(request)
-        })
+        }
+        okHttpClientBuilder.addInterceptor(interceptor)
         return okHttpClientBuilder.build()
     }
 }

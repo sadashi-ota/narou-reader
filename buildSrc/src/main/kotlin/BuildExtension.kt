@@ -11,6 +11,7 @@ fun PluginDependenciesSpec.basePlugin() {
     id("kotlin-kapt")
     id("de.mannodermaus.android-junit5")
     id("jacoco")
+    id("com.github.ben-manes.versions")
 }
 
 fun Project.baseProc() {

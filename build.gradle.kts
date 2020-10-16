@@ -10,6 +10,7 @@ buildscript {
         classpath(Deps.Gradle.build)
         classpath(Deps.Gradle.kotlin)
         classpath(Deps.Gradle.androidJunit5)
+        classpath(Deps.Gradle.versionsPlugin)
     }
 }
 
@@ -23,3 +24,4 @@ allprojects {
 tasks.register("clean", type = Delete::class) {
     delete(rootProject.buildDir)
 }
+

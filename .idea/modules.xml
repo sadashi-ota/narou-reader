@@ -2,16 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="narou-reader/app" />
-      <module fileurl="file://$PROJECT_DIR$/buildSrc/buildSrc.iml" filepath="$PROJECT_DIR$/buildSrc/buildSrc.iml" group="narou-reader/buildSrc" />
-      <module fileurl="file://$PROJECT_DIR$/features/core/core.iml" filepath="$PROJECT_DIR$/features/core/core.iml" group="narou-reader/core" />
-      <module fileurl="file://$PROJECT_DIR$/narou-reader.iml" filepath="$PROJECT_DIR$/narou-reader.iml" group="narou-reader" />
-      <module fileurl="file://$PROJECT_DIR$/features/novel/novel_di/novel_di.iml" filepath="$PROJECT_DIR$/features/novel/novel_di/novel_di.iml" group="narou-reader/novel_di" />
-      <module fileurl="file://$PROJECT_DIR$/features/novel/novel_domain/novel_domain.iml" filepath="$PROJECT_DIR$/features/novel/novel_domain/novel_domain.iml" group="narou-reader/novel_domain" />
-      <module fileurl="file://$PROJECT_DIR$/features/novel/novel_infra/novel_infra.iml" filepath="$PROJECT_DIR$/features/novel/novel_infra/novel_infra.iml" group="narou-reader/novel_infra" />
-      <module fileurl="file://$PROJECT_DIR$/features/novel/novel_ui/novel_ui.iml" filepath="$PROJECT_DIR$/features/novel/novel_ui/novel_ui.iml" group="narou-reader/novel_ui" />
-      <module fileurl="file://$PROJECT_DIR$/features/novel/novel_usecase/novel_usecase.iml" filepath="$PROJECT_DIR$/features/novel/novel_usecase/novel_usecase.iml" group="narou-reader/novel_usecase" />
-      <module fileurl="file://$PROJECT_DIR$/features/resource/resource.iml" filepath="$PROJECT_DIR$/features/resource/resource.iml" group="narou-reader/resource" />
+      <module fileurl="file://$PROJECT_DIR$/narou-reader.iml" filepath="$PROJECT_DIR$/narou-reader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/narou-reader.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/narou-reader.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/narou-reader.buildSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/narou-reader.buildSrc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/core/narou-reader.core.iml" filepath="$PROJECT_DIR$/.idea/modules/features/core/narou-reader.core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/novel/novel_di/narou-reader.novel_di.iml" filepath="$PROJECT_DIR$/.idea/modules/features/novel/novel_di/narou-reader.novel_di.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/novel/novel_domain/narou-reader.novel_domain.iml" filepath="$PROJECT_DIR$/.idea/modules/features/novel/novel_domain/narou-reader.novel_domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/novel/novel_infra/narou-reader.novel_infra.iml" filepath="$PROJECT_DIR$/.idea/modules/features/novel/novel_infra/narou-reader.novel_infra.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/novel/novel_ui/narou-reader.novel_ui.iml" filepath="$PROJECT_DIR$/.idea/modules/features/novel/novel_ui/narou-reader.novel_ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/novel/novel_usecase/narou-reader.novel_usecase.iml" filepath="$PROJECT_DIR$/.idea/modules/features/novel/novel_usecase/narou-reader.novel_usecase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/resource/narou-reader.resource.iml" filepath="$PROJECT_DIR$/.idea/modules/features/resource/narou-reader.resource.iml" />
     </modules>
   </component>
 </project>
