@@ -20,9 +20,3 @@ dependencies {
     Deps.frameworkLibraries.forEach { implementation(it) }
     Deps.testLibraries.forEach { testImplementation(it) }
 }
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs = listOf("-XXLanguage:+InlineClasses")
-    }
-}
