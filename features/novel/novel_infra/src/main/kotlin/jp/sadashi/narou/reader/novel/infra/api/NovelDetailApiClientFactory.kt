@@ -10,13 +10,15 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 
 object NovelDetailApiClientFactory {
 
+    private const val HTML_DOMAIN = ""
+
     fun create(): NovelDetailApiClient {
         return provideRetrofit().create(NovelDetailApiClient::class.java)
     }
 
     private fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BuildConfig.HTML_DOMAIN)
+            .baseUrl(HTML_DOMAIN)
             .client(createClient())
             .addConverterFactory(JspoonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

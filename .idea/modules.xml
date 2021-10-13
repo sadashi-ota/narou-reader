@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/narou-reader.iml" filepath="$PROJECT_DIR$/narou-reader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/narou-reader.iml" filepath="$PROJECT_DIR$/.idea/modules/narou-reader.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/narou-reader.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/narou-reader.app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/narou-reader.buildSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/narou-reader.buildSrc.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/core/narou-reader.core.iml" filepath="$PROJECT_DIR$/.idea/modules/features/core/narou-reader.core.iml" />

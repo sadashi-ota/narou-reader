@@ -1,12 +1,13 @@
 plugins {
-    id("com.android.library")
+    id(Deps.Plugin.library)
     basePlugin()
 }
 
-baseProc()
-
 android {
     baseConfiguration()
+    kotlinOptions {
+        jvmTarget = Deps.Versions.jvmTarget
+    }
 }
 
 dependencies {

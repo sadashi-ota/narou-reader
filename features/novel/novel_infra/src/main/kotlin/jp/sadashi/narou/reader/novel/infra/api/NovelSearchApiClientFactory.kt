@@ -1,8 +1,8 @@
 package jp.sadashi.narou.reader.novel.infra.api
 
-import jp.sadashi.narou.reader.novel.infra.BuildConfig
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import jp.sadashi.narou.reader.novel.infra.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -12,13 +12,15 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 object NovelSearchApiClientFactory {
 
+    private const val API_DOMAIN = ""
+
     fun create(): NovelSearchApiClient {
         return provideRetrofit().create(NovelSearchApiClient::class.java)
     }
 
     private fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(jp.sadashi.narou.reader.novel.infra.BuildConfig.API_DOMAIN)
+            .baseUrl(API_DOMAIN)
             .client(createClient())
             .addConverterFactory(
                 MoshiConverterFactory.create(
@@ -31,7 +33,7 @@ object NovelSearchApiClientFactory {
 
     private fun createClient(): OkHttpClient {
         val okHttpClientBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
-        if (jp.sadashi.narou.reader.novel.infra.BuildConfig.DEBUG) {
+        if (BuildConfig.DEBUG) {
             val loggingInterceptor =
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             okHttpClientBuilder.addInterceptor(loggingInterceptor)

@@ -1,39 +1,27 @@
-import com.android.build.gradle.BaseExtension
-import com.android.build.gradle.internal.dsl.BuildType
-import de.mannodermaus.gradle.plugins.junit5.junitPlatform
-import org.gradle.api.JavaVersion
-import org.gradle.api.Project
+import com.android.build.gradle.LibraryExtension
+import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import org.gradle.plugin.use.PluginDependenciesSpec
 
 fun PluginDependenciesSpec.basePlugin() {
-    id("kotlin-android")
-    id("kotlin-android-extensions")
-    id("kotlin-kapt")
-    id("de.mannodermaus.android-junit5")
-    id("jacoco")
-    id("com.github.ben-manes.versions")
+    id(Deps.Plugin.kotlin)
+    id(Deps.Plugin.kapt)
+    id(Deps.Plugin.jacoco)
+    id(Deps.Plugin.androidJunit5)
 }
 
-fun Project.baseProc() {
-    Prop.loadProperties("$rootDir/properties/config.properties")
-}
-
-fun BaseExtension.baseConfiguration() {
-    compileSdkVersion(Deps.Versions.compileSdk)
-    buildToolsVersion = Deps.Versions.buildTools
+fun LibraryExtension.baseConfiguration() {
+    compileSdk = Deps.Versions.compileSdk
 
     defaultConfig {
-        minSdkVersion(Deps.Versions.minSdk)
-        targetSdkVersion(Deps.Versions.compileSdk)
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        minSdk = Deps.Versions.minSdk
+        targetSdk = Deps.Versions.compileSdk
     }
+
     buildTypes {
         getByName("debug") {
-            setCommonBuildConfig(this)
             isMinifyEnabled = false
         }
         getByName("release") {
-            setCommonBuildConfig(this)
             isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -41,37 +29,44 @@ fun BaseExtension.baseConfiguration() {
             )
         }
     }
-    sourceSets {
-        getByName("main").java.srcDirs("src/main/kotlin")
-        getByName("test").java.srcDirs("src/test/kotlin")
+
+    sourceSets.forEach {
+        it.java.srcDirs("src/$it.name/kotlin")
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    testOptions {
-        junitPlatform {
-            filters {
-                includeEngines("spek2")
-            }
-            jacocoOptions {
-                html.enabled = true
-                xml.enabled = true
-                csv.enabled = false
-                excludedClasses.addAll(
-                    listOf(
-                        "**/di/*.class",
-                        "**/extensions/*.class",
-                        "**/ui/**/*.class",
-                        "**/utility/*.class"
-                    )
-                )
-            }
-        }
+        sourceCompatibility = org.gradle.api.JavaVersion.VERSION_1_8
+        targetCompatibility = org.gradle.api.JavaVersion.VERSION_1_8
     }
 }
 
-fun setCommonBuildConfig(buildType: BuildType) {
-    buildType.buildConfigField("String", "API_DOMAIN", "\"${Prop.map["apiDomain"]}\"")
-    buildType.buildConfigField("String", "HTML_DOMAIN", "\"${Prop.map["htmlDomain"]}\"")
+fun BaseAppModuleExtension.baseConfiguration() {
+    compileSdk = Deps.Versions.compileSdk
+
+    defaultConfig {
+        minSdk = Deps.Versions.minSdk
+        targetSdk = Deps.Versions.compileSdk
+    }
+
+    buildTypes {
+        getByName("debug") {
+            isMinifyEnabled = false
+        }
+        getByName("release") {
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+
+    sourceSets.forEach {
+        it.java.srcDirs("src/$it.name/kotlin")
+    }
+
+    compileOptions {
+        sourceCompatibility = org.gradle.api.JavaVersion.VERSION_1_8
+        targetCompatibility = org.gradle.api.JavaVersion.VERSION_1_8
+    }
 }

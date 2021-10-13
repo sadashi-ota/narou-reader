@@ -1,21 +1,24 @@
 plugins {
-    id("com.android.application")
+    id(Deps.Plugin.application)
     basePlugin()
-}
-
-baseProc()
-jacoco {
-    toolVersion = "0.8.3"
 }
 
 android {
     baseConfiguration()
 
     defaultConfig {
-        applicationId = "jp.sadashi.novel.reader.narou"
+        applicationId = "jp.sadashi.narou.reader.novel"
         versionCode = 1
         versionName = "0.0.1"
     }
+
+    kotlinOptions {
+        jvmTarget = Deps.Versions.jvmTarget
+    }
+}
+
+jacoco {
+    toolVersion = Deps.Versions.jacoco
 }
 
 dependencies {
@@ -26,7 +29,5 @@ dependencies {
 
     Deps.uiLibraries.forEach { implementation(it) }
 
-    implementation(Deps.Dagger.core)
-    kapt(Deps.Dagger.compiler)
-}
-
+    implementation(Deps.Lib.Dagger.core)
+    kapt(Deps.Lib.Dagger.compiler)}

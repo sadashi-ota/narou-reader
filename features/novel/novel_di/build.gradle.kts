@@ -1,11 +1,9 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("com.android.library")
+    id(Deps.Plugin.library)
     basePlugin()
 }
-
-baseProc()
 
 android {
     baseConfiguration()
@@ -18,8 +16,8 @@ dependencies {
     implementation(project(":novel_domain"))
     implementation(project(":novel_infra"))
 
-    implementation(Deps.Dagger.core)
-    kapt(Deps.Dagger.compiler)
+    implementation(Deps.Lib.Dagger.core)
+    kapt(Deps.Lib.Dagger.compiler)
 
     Deps.frameworkLibraries.forEach { implementation(it) }
     Deps.uiLibraries.forEach { implementation(it) }

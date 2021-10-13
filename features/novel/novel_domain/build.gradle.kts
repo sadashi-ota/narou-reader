@@ -1,17 +1,19 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("com.android.library")
+    id(Deps.Plugin.library)
     basePlugin()
-}
-
-baseProc()
-jacoco {
-    toolVersion = "0.8.3"
 }
 
 android {
     baseConfiguration()
+    kotlinOptions {
+        jvmTarget = Deps.Versions.jvmTarget
+    }
+}
+
+jacoco {
+    toolVersion = Deps.Versions.jacoco
 }
 
 dependencies {

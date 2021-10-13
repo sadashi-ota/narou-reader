@@ -1,24 +1,23 @@
 plugins {
-    id("com.android.library")
+    id(Deps.Plugin.library)
     basePlugin()
-}
-
-baseProc()
-jacoco {
-    toolVersion = "0.8.3"
 }
 
 android {
     baseConfiguration()
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = Deps.Versions.jvmTarget
     }
+}
+
+jacoco {
+    toolVersion = Deps.Versions.jacoco
 }
 
 dependencies {
     implementation(project(":novel_domain"))
-    implementation(Deps.Dagger.core)
-    kapt(Deps.Dagger.compiler)
+    implementation(Deps.Lib.Dagger.core)
+    kapt(Deps.Lib.Dagger.compiler)
 
     Deps.frameworkLibraries.forEach { implementation(it) }
     Deps.infraLibraries.forEach { implementation(it) }
