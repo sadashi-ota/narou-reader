@@ -1,5 +1,6 @@
 plugins {
     id(Deps.Plugin.application)
+    id("kotlin-android-extensions")
     basePlugin()
 }
 

@@ -9,7 +9,6 @@ object Deps {
         const val coroutines = "1.5.2"
         const val lifecycle = "2.3.1"
         const val navigation = "2.3.5"
-        const val apollo = "2.5.9"
         const val daggerHilt = "2.38.1"
         const val spek = "2.0.17"
         const val retrofit = "2.9.0"

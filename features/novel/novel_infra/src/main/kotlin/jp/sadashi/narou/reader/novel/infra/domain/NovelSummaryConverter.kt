@@ -36,6 +36,6 @@ internal object NovelSummaryConverter {
 
     private fun convertData(data: String): Date {
         val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-        return df.parse(data)
+        return df.parse(data) ?: throw IllegalArgumentException("date is invalid.")
     }
 }

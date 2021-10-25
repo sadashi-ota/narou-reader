@@ -1,4 +1,4 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+@file:Suppress("SpellCheckingInspection")
 
 plugins {
     id(Deps.Plugin.library)
@@ -11,6 +11,7 @@ android {
         jvmTarget = Deps.Versions.jvmTarget
         apiVersion = "1.4"
         languageVersion = "1.4"
+        freeCompilerArgs = listOf("-Xinline-classes")
     }
 }
 
