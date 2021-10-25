@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
@@ -21,10 +21,7 @@ import jp.sadashi.narou.reader.novel.ui.search.NovelInjector
 import jp.sadashi.narou.reader.novel.ui.search.presentation.NovelSearchContract
 import jp.sadashi.narou.reader.novel.ui.search.presentation.NovelSearchResultViewModel
 import jp.sadashi.narou.reader.novel.ui.search.presentation.NovelSearchTransition
-import kotlinx.android.synthetic.main.fragment_search.novelListView
-import kotlinx.android.synthetic.main.fragment_search.progressBar
-import kotlinx.android.synthetic.main.fragment_search.rootLayout
-import kotlinx.android.synthetic.main.fragment_search.toolbar
+import kotlinx.android.synthetic.main.fragment_search.*
 import javax.inject.Inject
 
 class NovelSearchFragment : Fragment(), NovelSearchContract.View {
@@ -34,6 +31,8 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
 
         fun newInstance() = NovelSearchFragment()
     }
+
+    private val viewModel: NovelSearchResultViewModel by viewModels()
 
     @Inject
     internal lateinit var presenter: NovelSearchContract.Presentation
@@ -64,9 +63,9 @@ class NovelSearchFragment : Fragment(), NovelSearchContract.View {
         val screenTransition = (context as? NovelSearchTransition)
             ?: throw ClassCastException("must cast NovelSearchTransition")
 
-        val viewModel = activity?.let {
-            ViewModelProviders.of(it).get(NovelSearchResultViewModel::class.java)
-        } ?: throw IllegalStateException("Activity is null.")
+//        val viewModel = activity?.let {
+//            ViewModelProviders.of(it).get(NovelSearchResultViewModel::class.java)
+//        } ?: throw IllegalStateException("Activity is null.")
 
         presenter.setUp(this, viewModel, screenTransition)
     }

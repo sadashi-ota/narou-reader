@@ -1,15 +1,19 @@
 plugins {
-    id("com.android.library")
+    id(Deps.Plugin.library)
     basePlugin()
-}
-
-baseProc()
-jacoco {
-    toolVersion = "0.8.3"
 }
 
 android {
     baseConfiguration()
+    kotlinOptions {
+        jvmTarget = Deps.Versions.jvmTarget
+        apiVersion = "1.4"
+        languageVersion = "1.4"
+    }
+}
+
+jacoco {
+    toolVersion = Deps.Versions.jacoco
 }
 
 dependencies {

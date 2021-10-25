@@ -1,26 +1,25 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+@file:Suppress("SpellCheckingInspection")
 
 plugins {
-    id("com.android.library")
+    id(Deps.Plugin.library)
     basePlugin()
-}
-
-baseProc()
-jacoco {
-    toolVersion = "0.8.3"
 }
 
 android {
     baseConfiguration()
+    kotlinOptions {
+        jvmTarget = Deps.Versions.jvmTarget
+        apiVersion = "1.4"
+        languageVersion = "1.4"
+        freeCompilerArgs = listOf("-Xinline-classes")
+    }
+}
+
+jacoco {
+    toolVersion = Deps.Versions.jacoco
 }
 
 dependencies {
     Deps.frameworkLibraries.forEach { implementation(it) }
     Deps.testLibraries.forEach { testImplementation(it) }
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs = listOf("-XXLanguage:+InlineClasses")
-    }
 }

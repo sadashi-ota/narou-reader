@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="GRADLE" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="/usr/local/Cellar/gradle/5.6.2/libexec" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/features/core" />
+            <option value="$PROJECT_DIR$/features/novel/novel_di" />
+            <option value="$PROJECT_DIR$/features/novel/novel_domain" />
+            <option value="$PROJECT_DIR$/features/novel/novel_infra" />
+            <option value="$PROJECT_DIR$/features/novel/novel_ui" />
+            <option value="$PROJECT_DIR$/features/novel/novel_usecase" />
+            <option value="$PROJECT_DIR$/features/resource" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
