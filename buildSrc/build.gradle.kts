@@ -8,5 +8,5 @@ repositories {
 }
 
 dependencies {
-    implementation("com.android.tools.build:gradle:7.0.3")
+    implementation("com.android.tools.build:gradle:7.0.4")
 }
